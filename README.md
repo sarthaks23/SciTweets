@@ -15,3 +15,4 @@ It is placed right next to the pom.xml file in the main project folder.
 ## Next Steps
 * Allow easy addition of new people (most likely by creating a user object)
 * Format the tweet list view on the jsp so it doesn't look like a bunch of listed variables
+* Update errorhandling in the tweetservice class
