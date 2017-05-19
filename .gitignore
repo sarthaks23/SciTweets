@@ -27,3 +27,4 @@ scitweets/.project
 scitweets/.settings/.jsdtscope
 scitweets/.settings/
 scitweets/.gitignore
+.recommenders/
