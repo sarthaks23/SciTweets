@@ -28,3 +28,4 @@ scitweets/.settings/.jsdtscope
 scitweets/.settings/
 scitweets/.gitignore
 .recommenders/
+scitweets/twitter4j.properties
