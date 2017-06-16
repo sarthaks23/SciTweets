@@ -28,7 +28,10 @@
 				</c:forEach>
 			</div>
 			<div class="col-sm-8 columnscroll" id="right" style="background-color: #ffb3b3; height: 90vh">
-				${tweets}
+				<c:forEach items="${tweets}" var="tweet">
+					<h2 class="text-primary" style="font:monaco; font-size:17pt">${tweet.username}:&nbsp;&nbsp;${tweet.tweet}</h2>
+					<h3 class="text-success">${tweet.description}</h3>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
