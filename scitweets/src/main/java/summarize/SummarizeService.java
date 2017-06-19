@@ -9,7 +9,7 @@ import com.aylien.textapi.TextAPIException;
 import com.aylien.textapi.parameters.SummarizeParams;
 import com.aylien.textapi.responses.Summarize;
 
-import textAnalysisAPIProperties.RetrieveProperties;
+import aylienProperties.RetrieveProperties;
 
 public class SummarizeService {
 	public static String summarize(String urlInput, int numOfSentences)

@@ -31,3 +31,4 @@ scitweets/.gitignore
 scitweets/twitter4j.properties
 scitweets/target/
 scitweets/textAnalysisAPI.properties
+scitweets/Aylien.properties
