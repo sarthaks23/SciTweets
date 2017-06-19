@@ -30,3 +30,4 @@ scitweets/.gitignore
 .recommenders/
 scitweets/twitter4j.properties
 scitweets/target/
+scitweets/Aylien.properties
