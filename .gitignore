@@ -32,3 +32,5 @@ scitweets/twitter4j.properties
 scitweets/target/
 scitweets/textAnalysisAPI.properties
 scitweets/Aylien.properties
+scitweets/src/main/resources/twitter4j.properties
+scitweets/src/main/resources/Aylien.properties
