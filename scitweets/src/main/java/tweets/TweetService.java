@@ -9,6 +9,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TweetService {
@@ -17,7 +18,7 @@ public class TweetService {
 	private static Twitter twitter = tf.getInstance();
 	private String url;
 
-	public List<STweet> retrieveTweets(String username) {
+	public List<STweet> retrieveTweets(String username) throws IOException {
 		if (!tweets.isEmpty()) {
 			tweets.clear();
 		}
@@ -27,11 +28,12 @@ public class TweetService {
 			List<Status> statuses = twitter.getUserTimeline(userID);
 			for (Status status : statuses) {
 				if (Filter.hasURL(status.getText())) {
-					for(int i=0; i<status.getURLEntities().length; i++){
+					for (int i = 0; i < status.getURLEntities().length; i++) {
 						url = status.getURLEntities()[i].getExpandedURL();
 					}
-					tweets.add(new STweet(user.getName(), status.getText(), url,
-							"Description to be added later"));
+					if(Filter.checkTweet(url)){
+						tweets.add(new STweet(user.getName(), status.getText(), url, "Description to be added later"));
+					}
 				}
 			}
 		} catch (TwitterException te) {
