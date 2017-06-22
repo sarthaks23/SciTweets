@@ -29,4 +29,12 @@ scitweets/.settings/
 scitweets/.gitignore
 .recommenders/
 scitweets/twitter4j.properties
-/build/
+scitweets/target/
+<<<<<<< HEAD
+scitweets/Aylien.properties
+=======
+scitweets/textAnalysisAPI.properties
+scitweets/Aylien.properties
+scitweets/src/main/resources/twitter4j.properties
+scitweets/src/main/resources/Aylien.properties
+>>>>>>> feature/Filter
