@@ -12,6 +12,9 @@ tweetModeExtended=true
 ```
 It is placed right next to the pom.xml file in the main project folder.
 
-## Next Steps
-* Format the tweet list view on the jsp so it doesn't look like a bunch of listed variables
-* Update errorhandling in the tweetservice class
+## Aylien.properties
+This app uses Aylien for analysing link tweets. In order to use it, create and Aylien.properties file and fill in your information.
+```
+APP_ID=***********
+KEY=**************************
+```
