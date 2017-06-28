@@ -57,7 +57,7 @@ public class Filter {
 			Scanner scan = new Scanner(filterWordsFile);
 			while (scan.hasNextLine()) {
 				String word = scan.nextLine();
-				if (!word.isEmpty() || word.contains("<")) {
+				if (!word.isEmpty() || !word.contains("<")) {
 					filterWords.add(word);
 				}
 			}

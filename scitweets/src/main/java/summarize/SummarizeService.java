@@ -13,19 +13,14 @@ import aylienProperties.RetrieveProperties;
 
 public class SummarizeService {
 	public static String summarize(String urlInput, int numOfSentences)
-			throws FileNotFoundException, IOException, MalformedURLException {
+			throws FileNotFoundException, IOException, MalformedURLException, TextAPIException {
 		TextAPIClient client = new TextAPIClient(RetrieveProperties.getAppID(), RetrieveProperties.getKey());
 		SummarizeParams.Builder builder = SummarizeParams.newBuilder();
 		java.net.URL url = new java.net.URL(urlInput);
 		builder.setUrl(url);
-		builder.setNumberOfSentences(5);
+		builder.setNumberOfSentences(numOfSentences);
 		Summarize summary = null;
-		try {
-			summary = client.summarize(builder.build());
-		} catch (TextAPIException e) {
-			e.printStackTrace();
-			return "Error retrieving summary";
-		}
+		summary = client.summarize(builder.build());
 		String finalSummary = null;
 		for (String sentence : summary.getSentences()) {
 			finalSummary = sentence + " ";
