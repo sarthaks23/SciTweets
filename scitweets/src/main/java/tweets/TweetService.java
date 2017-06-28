@@ -46,6 +46,8 @@ public class TweetService {
 					String description = SummarizeService.summarize(url, 5);
 					tweets.add(new STweet(user.getName(), status.getText(), url, description));
 					DBConnect.insert(url, description);
+				} else if (!Filter.checkTweet(url)) {
+					DBConnect.insert(url, "Invalid");
 				}
 			}
 		}
