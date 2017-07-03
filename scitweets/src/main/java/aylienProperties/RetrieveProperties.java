@@ -7,19 +7,20 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class RetrieveProperties {
-	public static String getKey() throws FileNotFoundException, IOException {
-		File configFile = new File("Aylien.properties");
+	
+	private String getProperties(String property) throws IOException{
+		File configFile = new File(getClass().getClassLoader().getResource("Aylien.properties").getFile());
 		FileReader reader = new FileReader(configFile);
 		Properties prop = new Properties();
 		prop.load(reader);
-		return prop.getProperty("KEY");
+		return prop.getProperty(property);
+	}
+	
+	public String getKey() throws FileNotFoundException, IOException {
+		return getProperties("KEY");
 	}
 
-	public static String getAppID() throws FileNotFoundException, IOException {
-		File configFile = new File("Aylien.properties");
-		FileReader reader = new FileReader(configFile);
-		Properties prop = new Properties();
-		prop.load(reader);
-		return prop.getProperty("APP_ID");
+	public String getAppID() throws FileNotFoundException, IOException {
+		return getProperties("APP_ID");
 	}
 }

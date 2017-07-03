@@ -31,7 +31,7 @@ public class HomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			request.setAttribute("tweets", tweetService.retrieveTweets(request.getParameter("user")));
-		} catch (SQLException | TextAPIException | TwitterException e) {
+		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("accounts", accountService.retrieveAccounts());

@@ -12,19 +12,19 @@ import com.aylien.textapi.responses.Summarize;
 import aylienProperties.RetrieveProperties;
 
 public class SummarizeService {
+	static RetrieveProperties rp = new RetrieveProperties();
 	public static String summarize(String urlInput, int numOfSentences)
 			throws FileNotFoundException, IOException, MalformedURLException, TextAPIException {
-		TextAPIClient client = new TextAPIClient(RetrieveProperties.getAppID(), RetrieveProperties.getKey());
+		TextAPIClient client = new TextAPIClient(rp.getAppID(), rp.getKey());
 		SummarizeParams.Builder builder = SummarizeParams.newBuilder();
 		java.net.URL url = new java.net.URL(urlInput);
 		builder.setUrl(url);
 		builder.setNumberOfSentences(numOfSentences);
 		Summarize summary = null;
 		summary = client.summarize(builder.build());
-		String finalSummary = null;
-		for (String sentence : summary.getSentences()) {
-			finalSummary = sentence + " ";
-		}
+		String finalSummary = String.join(",", summary.getSentences()).replaceAll(",", " ");
+		finalSummary = finalSummary.replaceAll("â€œ", "\"").replaceAll("â€?", "\"").replaceAll("â€™", "\'").replaceAll("â€”", "").replaceAll("Â", "");
+		System.out.println(finalSummary);
 		return finalSummary;
 	}
 }

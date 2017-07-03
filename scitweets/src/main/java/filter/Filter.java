@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -30,41 +31,44 @@ public class Filter {
 		}
 		return false;
 	}
+	
 
 	private static List<String> retrieveArticle(String urlInput) throws IOException {
 		final String SPECIALCHAR_REGEX = "[^a-z0-9 ]";
-		Document webpage = Jsoup.connect(urlInput).get();
-		String article = webpage.body().toString();
-		String[] parsedArticle = Jsoup.parse(article).toString().split("\\s+");
-		Pattern p = Pattern.compile(SPECIALCHAR_REGEX, Pattern.CASE_INSENSITIVE);
-		List<String> cleanedArticle = new ArrayList<String>();
-		for (String word : parsedArticle) {
-			Matcher m = p.matcher(word);
-			if (!m.find()) {
-				cleanedArticle.add(word);
+		try {
+			Document webpage = Jsoup.connect(urlInput).get();
+			String article = webpage.body().toString();
+			String[] parsedArticle = Jsoup.parse(article).toString().split("\\s+");
+			Pattern p = Pattern.compile(SPECIALCHAR_REGEX, Pattern.CASE_INSENSITIVE);
+			List<String> cleanedArticle = new ArrayList<String>();
+			for (String word : parsedArticle) {
+				Matcher m = p.matcher(word);
+				if (!m.find()) {
+					cleanedArticle.add(word);
+				}
 			}
+			return cleanedArticle;
+		} catch (HttpStatusException e) {
+			List<String> InvalidArticle = new ArrayList<String>();
+			InvalidArticle.add("paywall");
+			return InvalidArticle;
 		}
-		return cleanedArticle;
 	}
 
-	private static boolean checkArticle(List<String> article) {
+	private static boolean checkArticle(List<String> article) throws FileNotFoundException {
 		List<String> filterWords = new ArrayList<String>();
 		List<String> tempArray = new ArrayList<String>();
 		int matchCounter = 0;
 		ClassLoader cs = new Filter().getClass().getClassLoader();
 		File filterWordsFile = new File(cs.getResource("FilterWords.txt").getFile());
-		try {
-			Scanner scan = new Scanner(filterWordsFile);
-			while (scan.hasNextLine()) {
-				String word = scan.nextLine();
-				if (!word.isEmpty() || !word.contains("<")) {
-					filterWords.add(word);
-				}
+		Scanner scan = new Scanner(filterWordsFile);
+		while (scan.hasNextLine()) {
+			String word = scan.nextLine();
+			if (!word.isEmpty() || !word.contains("<")) {
+				filterWords.add(word);
 			}
-			scan.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
+		scan.close();
 		for (String wordInArticle : article) {
 			wordInArticle = wordInArticle.toLowerCase().replaceAll("\\s+", "").replaceAll("[^a-zA-Z0-9]", "");
 			if (!tempArray.contains(wordInArticle)) {
@@ -77,7 +81,7 @@ public class Filter {
 					}
 				}
 			}
-			if (matchCounter > 3) {
+			if (matchCounter > 7) {
 				return true;
 			}
 		}
@@ -85,6 +89,11 @@ public class Filter {
 	}
 
 	public static boolean checkTweet(String urlInput) throws IOException {
-		return Filter.checkArticle(Filter.retrieveArticle(urlInput));
+		if (!retrieveArticle(urlInput).get(0).equals("paywall")) {
+			return Filter.checkArticle(Filter.retrieveArticle(urlInput));
+		} else {
+			return false;
+		}
+
 	}
 }
