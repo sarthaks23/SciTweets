@@ -40,8 +40,8 @@ public class TweetService {
 				url = status.getURLEntities()[0].getExpandedURL();
 				if (!urlsOnPage.contains(url)) {
 					String statusText = ModifyTweet.deleteSecondURL(status.getText());
-					if (DBConnect.select(url) != null) {
-						String description = DBConnect.select(url)[1];
+					if (DBConnect.selectFromLinkcache(url) != null) {
+						String description = DBConnect.selectFromLinkcache(url)[1];
 						if (!description.equals("Invalid")) {
 							tweets.add(new STweet(user.getName(), statusText, url, description));
 							urlsOnPage.add(url);
@@ -50,13 +50,13 @@ public class TweetService {
 						String description = SummarizeService.summarize(url, 4);
 						if (description != null && !description.isEmpty()) {
 							tweets.add(new STweet(user.getName(), statusText, url, description));
-							DBConnect.insert(url, description);
+							DBConnect.insertIntoLinkcache(url, description);
 							urlsOnPage.add(url);
 						} else {
-							DBConnect.insert(url, "Invalid");
+							DBConnect.insertIntoLinkcache(url, "Invalid");
 						}
 					} else if (!Filter.checkTweet(url)) {
-						DBConnect.insert(url, "Invalid");
+						DBConnect.insertIntoLinkcache(url, "Invalid");
 					}
 				}
 			}

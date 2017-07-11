@@ -38,3 +38,4 @@ scitweets/Aylien.properties
 scitweets/src/main/resources/twitter4j.properties
 scitweets/src/main/resources/Aylien.properties
 >>>>>>> feature/Filter
+scitweets/src/main/resources/AdminCredentials.properties
