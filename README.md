@@ -25,3 +25,4 @@ In order to use the admin controls for this website, you need to create and Admi
 Username=[username]
 Password=[password]
 ```
+This file can be placed next to the Aylien.properties file in the resources folder with the Filter.txt
