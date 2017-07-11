@@ -18,3 +18,10 @@ This app uses Aylien for analysing link tweets. In order to use it, create and A
 APP_ID=***********
 KEY=**************************
 ```
+
+## AdminCredentials.properties
+In order to use the admin controls for this website, you need to create and AdminCredentials.properties file. The file should look like this:
+```
+Username=[username]
+Password=[password]
+```
