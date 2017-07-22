@@ -1,6 +1,6 @@
 # SciTweets
 ------------
-Find the site on scitweets.com
+Find the site on <a href="http://www.scitweets.com">scitweets.com</a>
 
 ## Twitter4j.properties
 A twitter4j.properties file is required for this project. The reason it's not included is because it contains sensitive information such as the accesstoken and other things that the app requires to access the twitter APIs. The file is set up as follows:
