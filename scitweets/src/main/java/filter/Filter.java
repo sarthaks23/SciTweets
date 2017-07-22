@@ -34,7 +34,8 @@ public class Filter {
 	private static List<String> retrieveArticle(String urlInput) throws IOException {
 		final String SPECIALCHAR_REGEX = "[^a-z0-9 ]";
 		try {
-			Document webpage = Jsoup.connect(urlInput).timeout(10 * 1000).ignoreContentType(true).validateTLSCertificates(false).get();
+			Document webpage = Jsoup.connect(urlInput).timeout(10 * 1000).ignoreContentType(true)
+					.validateTLSCertificates(false).get();
 			String article = webpage.body().toString();
 			String[] parsedArticle = Jsoup.parse(article).toString().split("\\s+");
 			Pattern p = Pattern.compile(SPECIALCHAR_REGEX, Pattern.CASE_INSENSITIVE);
