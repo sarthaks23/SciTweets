@@ -10,7 +10,7 @@ oauth.accessToken=***************************
 oauth.accessTokenSecret=***************************
 tweetModeExtended=true
 ```
-It is placed right next to the pom.xml file in the main project folder.
+It is placed in the resources folder.
 
 ## Aylien.properties
 This app uses Aylien for analysing link tweets. In order to use it, create and Aylien.properties file and fill in your information.
@@ -26,3 +26,6 @@ Username=[username]
 Password=[password]
 ```
 This file can be placed next to the Aylien.properties file in the resources folder with the Filter.txt
+
+## DBCredentials.properties
+This file is included in github. However, you will need to change your username and password as well as the db url to match whatever you have setup.
