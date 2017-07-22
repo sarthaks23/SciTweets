@@ -13,6 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminLogoutServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.getSession().removeAttribute("username");
-		request.getRequestDispatcher("/adminlogin").forward(request, response);
+		response.sendRedirect("/adminlogin");
 	}
 }

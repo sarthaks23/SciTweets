@@ -3,40 +3,38 @@ package filter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.net.ssl.SSLHandshakeException;
+
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import twitter4j.Status;
+import twitter4j.URLEntity;
+
 public class Filter {
 
-	public static boolean hasURL(String t) {
-		final String URL_REGEX = "^((https?|ftp)://|(www|ftp)\\.)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$";
-		int URLCounter = 0;
-		Pattern p = Pattern.compile(URL_REGEX);
-		String[] parts = t.split("\\s+");
-		for (String part : parts) {
-			Matcher m = p.matcher(part);
-			if (m.find()) {
-				URLCounter++;
-			}
-			if (URLCounter == 2) {
-				return true;
-			}
+	public static boolean hasURL(Status status) {
+		URLEntity[] url = status.getURLEntities();
+		if (url.length != 0) {
+			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
-	
 
 	private static List<String> retrieveArticle(String urlInput) throws IOException {
 		final String SPECIALCHAR_REGEX = "[^a-z0-9 ]";
 		try {
-			Document webpage = Jsoup.connect(urlInput).get();
+			Document webpage = Jsoup.connect(urlInput).timeout(10 * 1000).ignoreContentType(true).validateTLSCertificates(false).get();
 			String article = webpage.body().toString();
 			String[] parsedArticle = Jsoup.parse(article).toString().split("\\s+");
 			Pattern p = Pattern.compile(SPECIALCHAR_REGEX, Pattern.CASE_INSENSITIVE);
@@ -51,6 +49,18 @@ public class Filter {
 		} catch (HttpStatusException e) {
 			List<String> InvalidArticle = new ArrayList<String>();
 			InvalidArticle.add("paywall");
+			return InvalidArticle;
+		} catch (SocketTimeoutException e) {
+			List<String> InvalidArticle = new ArrayList<String>();
+			InvalidArticle.add("timeout");
+			return InvalidArticle;
+		} catch (SocketException e) {
+			List<String> InvalidArticle = new ArrayList<String>();
+			InvalidArticle.add("badURL");
+			return InvalidArticle;
+		} catch (SSLHandshakeException e) {
+			List<String> InvalidArticle = new ArrayList<String>();
+			InvalidArticle.add("SSLHandshakeException");
 			return InvalidArticle;
 		}
 	}
@@ -89,11 +99,16 @@ public class Filter {
 	}
 
 	public static boolean checkTweet(String urlInput) throws IOException {
-		if (!retrieveArticle(urlInput).get(0).equals("paywall")) {
-			return Filter.checkArticle(Filter.retrieveArticle(urlInput));
+		List<String> article = retrieveArticle(urlInput);
+		if (article.size() != 0) {
+			if (!article.get(0).equals("paywall") && !article.get(0).equals("timeout")
+					&& !article.get(0).equals("badURL") && !article.get(0).equals("SSLHandshakeException")) {
+				return checkArticle(article);
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
-
 	}
 }

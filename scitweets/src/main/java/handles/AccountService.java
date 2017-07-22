@@ -1,5 +1,6 @@
 package handles;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import dbconnection.DBConnect;
 
 public class AccountService {
 
-	private List<Account> getAccountsFromDb() {
+	private List<Account> getAccountsFromDb() throws IOException {
 		List<Account> accounts = new ArrayList<Account>();
 		try {
 			List<String[]> rawAccounts = DBConnect.selectAllFromHandles();
@@ -24,7 +25,7 @@ public class AccountService {
 	}
 
 
-	public List<Account> retrieveAccounts() {
+	public List<Account> retrieveAccounts() throws IOException {
 		return getAccountsFromDb();
 	}
 }

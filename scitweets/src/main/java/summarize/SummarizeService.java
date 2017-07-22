@@ -3,6 +3,7 @@ package summarize;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+
 import com.aylien.textapi.TextAPIClient;
 import com.aylien.textapi.TextAPIException;
 import com.aylien.textapi.parameters.SummarizeParams;
@@ -23,7 +24,8 @@ public class SummarizeService {
 		builder.setNumberOfSentences(numOfSentences);
 		Summarize summary = null;
 		summary = client.summarize(builder.build());
-		String finalSummary = String.join(",", summary.getSentences()).replace(",", " ");
+		String finalSummary =  String.join(",", summary.getSentences()).replaceAll(",", " ");
 		return finalSummary;
 	}
+	
 }
