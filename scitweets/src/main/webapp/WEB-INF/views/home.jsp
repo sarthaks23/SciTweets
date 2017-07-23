@@ -30,7 +30,7 @@
 		<!--  <img src="${pageContext.servletContext.contextPath}/images/Logo.png" alt="SciTweets"
 			style="position: absolute; top: 6px; left: 706px; width: 285px; height: 123px;"/> -->
 		<div class="row">
-			<div class="col-sm-3" id="left"
+			<div class="col-sm-3 columnscroll" id="left"
 				style="background-color: #000000; height: 100vh">
 				<c:forEach items="${accounts}" var="account">
 					<form method="POST" action="/home" style="padding-bottom: 12px;">
