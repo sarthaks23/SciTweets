@@ -12,6 +12,13 @@ Processing
 Function
 Security
 System
+PHP
+hybrid
+application
+dynamic
+functionality
+reload
+efficiency
 Program
 Java
 C
@@ -26,7 +33,8 @@ Compression
 Privacy
 Cloud
 Code
- 
+Metadata
+Logarithmic
 <Chemistry>
 Combinatorial
 Bivalent
@@ -56,7 +64,7 @@ Silicon
 Dope
 Magnetic
 Protonation
-Biology
+<Biology>
 Tumor
 Signalling 
 Virus 
@@ -64,10 +72,18 @@ Splice
 Heterogeneity 
 Bioinformatics
 Pathway
+Globulin
 MAPK
 Janus
 Phosphorylated
 Kinase
+cells 
+cell
+genomic
+sequence
+omni
+genes
+gene
 Degradation
 Receptor 
 Deregulation
@@ -90,7 +106,6 @@ Nanoparticle
 Biomarker
 Therapeutic
 Diagnostic
- 
 <Physics>
 Inertia
 Force
@@ -116,7 +131,6 @@ Entropy
 Universe
 Wave
 Relativity
- 
 <College/Place Names>
 Stanford
 Harvard
@@ -128,10 +142,10 @@ Cambridge
 London
 Munich
 Berlin
+Illumina
 Moscow
 Institute 
 Caltech
- 
 <General Terms>
 Research
 Study
@@ -140,3 +154,18 @@ Professor
 Experiment
 Theory
 Fundamental
+Doctor
+Clinic
+Pion
+Tau
+Neutrion
+Antiparticle
+Lepton
+Baryon
+Hadron
+Cosmic
+Universe
+Nebula
+Galaxy
+Constellation
+

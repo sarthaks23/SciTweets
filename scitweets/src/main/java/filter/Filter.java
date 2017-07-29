@@ -77,7 +77,7 @@ public class Filter {
 					}
 				}
 			}
-			if (matchCounter > 3) {
+			if (matchCounter > 4) {
 				return true;
 			}
 		}
