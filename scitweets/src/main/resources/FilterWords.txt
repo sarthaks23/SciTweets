@@ -35,6 +35,10 @@ Cloud
 Code
 Metadata
 Logarithmic
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
 <Chemistry>
 Combinatorial
 Bivalent
@@ -64,6 +68,10 @@ Silicon
 Dope
 Magnetic
 Protonation
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
 <Biology>
 Tumor
 Signalling 
@@ -106,6 +114,10 @@ Nanoparticle
 Biomarker
 Therapeutic
 Diagnostic
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
 <Physics>
 Inertia
 Force
@@ -131,6 +143,10 @@ Entropy
 Universe
 Wave
 Relativity
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
 <College/Place Names>
 Stanford
 Harvard
@@ -146,6 +162,10 @@ Illumina
 Moscow
 Institute 
 Caltech
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
 <General Terms>
 Research
 Study
@@ -168,4 +188,7 @@ Universe
 Nebula
 Galaxy
 Constellation
+<<<<<<< HEAD
 
+=======
+>>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
