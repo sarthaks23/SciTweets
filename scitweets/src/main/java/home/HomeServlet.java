@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aylien.textapi.TextAPIException;
 
-import handles.AccountService;
+import handles.CategoryService;
 import tweets.TweetService;
 import twitter4j.TwitterException;
 
@@ -19,11 +19,11 @@ import twitter4j.TwitterException;
 @WebServlet(urlPatterns = "/home")
 public class HomeServlet extends HttpServlet {
 	private TweetService tweetService = new TweetService();
-	private AccountService accountService = new AccountService();
+	private CategoryService categoryService = new CategoryService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("accounts", accountService.retrieveAccounts());
+		request.setAttribute("categories", categoryService.retrieveCategories());
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 	
@@ -34,7 +34,7 @@ public class HomeServlet extends HttpServlet {
 		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("accounts", accountService.retrieveAccounts());
+		request.setAttribute("categories", categoryService.retrieveCategories());
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 }

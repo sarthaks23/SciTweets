@@ -27,16 +27,29 @@
 				on a Twitter User or Organization and Read About the Latest Science
 				News</h5>
 		</center>
-		<!--  <img src="${pageContext.servletContext.contextPath}/images/Logo.png" alt="SciTweets"
-			style="position: absolute; top: 6px; left: 706px; width: 285px; height: 123px;"/> -->
 		<div class="row">
 			<div class="col-sm-3 columnscroll" id="left"
 				style="background-color: #000000; height: 100vh">
-				<c:forEach items="${accounts}" var="account">
+				<!--<c:forEach items="${accounts}" var="account">
 					<form method="POST" action="/home" style="padding-bottom: 12px;">
 						<input type="hidden" name="user" value="${account.username}" /> <input
 							type="submit" value="${account.name}" class="btn btn-primary" />
 					</form>
+				</c:forEach>-->
+				<c:forEach items="${categories}" var="category">
+					<p>
+					<div class="dropdown">
+						<button class="btn btn-primary dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							${category.categoryName} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<c:forEach items="${category.accounts}" var="account">
+								<li><a href="#">${account.name}</a></li>
+							</c:forEach>
+						</ul>
+					</div>
+					</p>
 				</c:forEach>
 			</div>
 			<div class="col-sm-9 columnscroll" id="right"

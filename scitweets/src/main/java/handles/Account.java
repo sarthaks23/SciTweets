@@ -3,9 +3,9 @@ package handles;
 public class Account {
 	private String name;
 	private String username;
-	private String category;
-	
-	public Account(String name, String username, String category) {
+	private int category;
+
+	public Account(String name, String username, int category) {
 		super();
 		this.name = name;
 		this.username = username;
@@ -28,11 +28,12 @@ public class Account {
 		this.username = username;
 	}
 	
-	public String getCategory() {
+	
+	public int getCategory() {
 		return category;
 	}
-	
-	public void setCategory(String category) {
+
+	public void setCategory(int category) {
 		this.category = category;
 	}
 
@@ -40,5 +41,5 @@ public class Account {
 	public String toString() {
 		return "Account [name=" + name + ", username=" + username + ", category=" + category + "]";
 	}
-	
+
 }

@@ -77,9 +77,26 @@ public class DBConnect {
 		ResultSet resultset = statement.executeQuery("SELECT * FROM handles");
 		ArrayList<String[]> results = new ArrayList<String[]>();
 		while (resultset.next()) {
-			String[] row = new String[2];
+			String[] row = new String[3];
 			row[0] = resultset.getString("name");
 			row[1] = resultset.getString("username");
+			row[2] = Integer.toString(resultset.getInt("CategoryID"));
+			results.add(row);
+		}
+		conn.close();
+		return results;
+	}
+	
+	public static List<String[]> selectFromCategory()
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
+		Connection conn = dbconnect();
+		Statement statement = conn.createStatement();
+		ResultSet resultset = statement.executeQuery("SELECT * FROM category");
+		ArrayList<String[]> results = new ArrayList<String[]>();
+		while (resultset.next()) {
+			String[] row = new String[2];
+			row[0] = Integer.toString(resultset.getInt("CategoryID"));
+			row[1] = resultset.getString("CategoryName");
 			results.add(row);
 		}
 		conn.close();
