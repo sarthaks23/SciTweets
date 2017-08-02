@@ -17,6 +17,7 @@ import twitter4j.TwitterFactory;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/addhandle")
 public class AddHandle extends HttpServlet {
+
 	private static TwitterFactory tf = new TwitterFactory();
 	private static Twitter twitter = tf.getInstance();
 
@@ -27,7 +28,14 @@ public class AddHandle extends HttpServlet {
 		if (checkFormat[0].equals("@")) {
 			try {
 				twitter.showUser(usernameToAdd);
-				DBConnect.insertIntoHandles(request.getParameter("name"), usernameToAdd);
+				String category = request.getParameter("category");
+				String name = request.getParameter("name");
+				if (DBConnect.categoryExists(category)) {
+					DBConnect.insertIntoHandles(name, usernameToAdd, category);
+				} else {
+					DBConnect.insertIntoCategory(category);
+					DBConnect.insertIntoHandles(name, usernameToAdd, category);
+				}
 				request.getRequestDispatcher("/admincontrol").forward(request, response);
 			} catch (TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException
 					| SQLException e) {
@@ -36,8 +44,9 @@ public class AddHandle extends HttpServlet {
 					request.getRequestDispatcher("/admincontrol").forward(request, response);
 				}
 			}
-		}else{
-			request.setAttribute("errorAddingHandle" , "Please add an @ sign to the beginning of the username");
-			request.getRequestDispatcher("/admincontrol").forward(request, response);		}
+		} else {
+			request.setAttribute("errorAddingHandle", "Please add an @ sign to the beginning of the username");
+			request.getRequestDispatcher("/admincontrol").forward(request, response);
+		}
 	}
 }

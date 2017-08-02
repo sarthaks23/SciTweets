@@ -18,6 +18,7 @@ import twitter4j.TwitterException;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/home")
 public class HomeServlet extends HttpServlet {
+	
 	private TweetService tweetService = new TweetService();
 	private CategoryService categoryService = new CategoryService();
 

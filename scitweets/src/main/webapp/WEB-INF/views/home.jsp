@@ -30,12 +30,6 @@
 		<div class="row">
 			<div class="col-sm-3 columnscroll" id="left"
 				style="background-color: #000000; height: 100vh">
-				<!--<c:forEach items="${accounts}" var="account">
-					<form method="POST" action="/home" style="padding-bottom: 12px;">
-						<input type="hidden" name="user" value="${account.username}" /> <input
-							type="submit" value="${account.name}" class="btn btn-primary" />
-					</form>
-				</c:forEach>-->
 				<c:forEach items="${categories}" var="category">
 					<p>
 					<div class="dropdown">
@@ -45,7 +39,8 @@
 						</button>
 						<ul class="dropdown-menu">
 							<c:forEach items="${category.accounts}" var="account">
-								<li><a href="#">${account.name}</a></li>
+								<li
+									onclick="post('/home', {user: '${account.username}'}); loadingMessage();">${account.name}</li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -54,12 +49,13 @@
 			</div>
 			<div class="col-sm-9 columnscroll" id="right"
 				style="background-color: #000000; height: 100vh">
-				<c:forEach items="${tweets}" var="tweet">
-					<h2 style="font: monaco; font-size: 15pt; color: #add8e6">
-						<a href="${tweet.url}" target="_blank"> ${tweet.url}</a>
-					</h2>
-					<h3 style="font: monaco; font-size: 12pt; color: #FFFFFF">${tweet.description}</h3>
-				</c:forEach>
+				<p id="loading"></p>
+					<c:forEach items="${tweets}" var="tweet">
+						<h2 style="font: monaco; font-size: 15pt; color: #add8e6">
+							<a href="${tweet.url}" target="_blank"> ${tweet.url}</a>
+						</h2>
+						<h3 style="font: monaco; font-size: 12pt; color: #FFFFFF">${tweet.description}</h3>
+					</c:forEach>
 			</div>
 		</div>
 		<div style="position: relative">
@@ -70,6 +66,31 @@
 			</h4>
 		</div>
 	</div>
+	<script>
+		function post(path, params) {
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", path);
+			for ( var key in params) {
+				if (params.hasOwnProperty(key)) {
+					var hiddenField = document.createElement("input");
+					hiddenField.setAttribute("type", "hidden");
+					hiddenField.setAttribute("name", key);
+					hiddenField.setAttribute("value", params[key]);
+					form.appendChild(hiddenField);
+				}
+			}
+			document.body.appendChild(form);
+			form.submit();
+		}
+	</script>
+	<script>
+		function loadingMessage() {
+			document.getElementById('loading').innerHTML = 'Please wait while the page loads. It might take a few seconds...';
+			document.getElementById('loading').setAttribute("class", "alert alert-info");
+			document.getElementById('loading').setAttribute("style", "font-weight: bold;")
+		}
+	</script>
 	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>

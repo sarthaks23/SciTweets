@@ -17,7 +17,7 @@ public class RemoveHandle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			DBConnect.deleteFromHandles(request.getParameter("username"));
+			DBConnect.deleteHandle(request.getParameter("username"));
 			request.getRequestDispatcher("/admincontrol").forward(request, response);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
