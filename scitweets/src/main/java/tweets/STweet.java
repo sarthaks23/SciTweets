@@ -14,6 +14,7 @@ public class STweet {
 		this.description = description;
 	}
 
+
 	@Override
 	public String toString() {
 		return "STweet [username=" + username + ", tweet=" + tweet + ", url=" + url + ", description=" + description
