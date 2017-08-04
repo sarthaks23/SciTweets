@@ -25,6 +25,13 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("categories", categoryService.retrieveCategories());
+		try {
+			request.setAttribute("tweets", tweetService.retrieveTweets("@theNCI"));
+			request.setAttribute("username", "@theNCI");
+			request.setAttribute("name", "National Cancer Institute");
+		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 	
@@ -35,6 +42,8 @@ public class HomeServlet extends HttpServlet {
 		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("username", request.getParameter("user"));
+		request.setAttribute("name", request.getParameter("name"));
 		request.setAttribute("categories", categoryService.retrieveCategories());
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
