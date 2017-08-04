@@ -69,8 +69,7 @@
 								<ul class="dropdown-menu">
 									<c:forEach items="${category.accounts}" var="account">
 										<li
-											onclick="post('/home', {user: '${account.username}', name: '${account.name}'}); loadingMessage(); 
-											setCurrentHandle('${account.name}', '${account.username}')"
+											onclick="post('/home', {user: '${account.username}', name: '${account.name}'}); loadingMessage();"
 											style="padding-left: 3px; padding-right: 4px">${account.name}</li>
 									</c:forEach>
 								</ul>
