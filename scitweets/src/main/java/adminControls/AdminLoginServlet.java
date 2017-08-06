@@ -13,6 +13,7 @@ import Properties.RetrieveProperties;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/adminlogin")
 public class AdminLoginServlet extends HttpServlet {
+	
 	static RetrieveProperties rp = new RetrieveProperties();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

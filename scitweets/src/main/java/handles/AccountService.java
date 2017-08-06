@@ -30,7 +30,8 @@ public class AccountService {
 			for (int i = 0; i < rawAccounts.size(); i++) {
 				String accountName = rawAccounts.get(i)[0];
 				String accountUsername = rawAccounts.get(i)[1];
-				accounts.add(new Account(accountName, accountUsername));
+				int categoryID = Integer.parseInt(rawAccounts.get(i)[2]);
+				accounts.add(new Account(accountName, accountUsername, categoryID));
 			}
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

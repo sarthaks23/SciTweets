@@ -63,6 +63,10 @@ public class Filter {
 			List<String> InvalidArticle = new ArrayList<String>();
 			InvalidArticle.add("SSLHandshakeException");
 			return InvalidArticle;
+		} catch (Exception e) {
+			List<String> InvalidArticle = new ArrayList<String>();
+			InvalidArticle.add("Other Issue");
+			return InvalidArticle;
 		}
 	}
 
@@ -107,7 +111,8 @@ public class Filter {
 		List<String> article = retrieveArticle(urlInput);
 		if (article.size() != 0) {
 			if (!article.get(0).equals("paywall") && !article.get(0).equals("timeout")
-					&& !article.get(0).equals("badURL") && !article.get(0).equals("SSLHandshakeException")) {
+					&& !article.get(0).equals("badURL") && !article.get(0).equals("SSLHandshakeException")
+					&& !article.get(0).equals("Other Issue")) {
 				return checkArticle(article);
 			} else {
 				return false;

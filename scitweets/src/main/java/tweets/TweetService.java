@@ -79,6 +79,9 @@ public class TweetService {
 				}
 			}
 		}
+		if (tweets.isEmpty()) {
+			tweets.add(new STweet("", "", "", "There seems to be no valid tweets :("));
+		}
 		return tweets;
 	}
 }
