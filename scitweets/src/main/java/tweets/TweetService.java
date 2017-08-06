@@ -29,20 +29,6 @@ public class TweetService {
 		if (!tweets.isEmpty()) {
 			tweets.clear();
 		}
-<<<<<<< HEAD
-		try {
-			User user = twitter.showUser(username);
-			long userID = user.getId();
-			List<Status> statuses = twitter.getUserTimeline(userID);
-			for (Status status : statuses) {
-				if (Filter.hasURL(status.getText())) {
-					for (int i = 0; i < status.getURLEntities().length; i++) {
-						url = status.getURLEntities()[i].getExpandedURL();
-			
-					}
-					if(Filter.checkTweet(url)){
-						tweets.add(new STweet(user.getName(), status.getText(), url, "Description to be added later"));
-=======
 		User user = twitter.showUser(username);
 		long userID = user.getId();
 		Paging p = new Paging();
@@ -74,7 +60,6 @@ public class TweetService {
 						}
 					} else if (!Filter.checkTweet(url)) {
 						DBConnect.insertIntoLinkcache(url, "Invalid");
->>>>>>> ae706e2fec0a13209acf8101b663362c00b06e1d
 					}
 				}
 			}
