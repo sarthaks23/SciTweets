@@ -35,8 +35,9 @@ This file is included in github. However, you will need to change your username 
 ## Setting up the database
 To work properly, a database is required. This webapp uses a MySQL 5.1.13 driver. The following SQL code should set up the tables properly.
 ```
-CREATE TABLE handles (name VARCHAR(50), username VARCHAR(50));
+CREATE TABLE handles (name VARCHAR(50), username VARCHAR(50), CategoryID int);
 CREATE TABLE linkcache (url VARCHAR(300), summary TEXT);
+CREATE TABLE category (CategoryID int, CategoryName VARCHAR(20));
 ```
 If you decide to change the names of these tables, you will need to modify the DBConnect class.
 
