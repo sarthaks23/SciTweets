@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,28 +39,36 @@
 <body style="background-color: #000000">
 	<div style="background-color: #000000" class="container-fluid">
 		<center>
-			<h1 style="font: monaco; font-size: 20pt; color: #FFFFFF">About
-				SciTweets: Learn About Our Mission And Who We Are</h1>
+			<h1 style="font: monaco; font-size: 30pt; color: #FFFFFF">About
+				SciTweets</h1>
 		</center>
 		<center>
 			<h2
-				style="font: monaco; padding: 20px; font-size: 20pt; color: #add8e6">
+				style="font: monaco; padding: 20px; font-size: 30px; color: #add8e6">
 				Our Mission</h2>
 		</center>
 		<blockquote>
-			<p style="font: monaco; font-size: 12pt; color: #FFFFFF">
-				SciTweets was created to make scientific research and current
-				science news available and accessible to anyone for free. Presented
-				in a simple straightforward user interface without any distractions,
-				we aim to keep everyone involved with the fast-paced world of
-				scientific and technological research. To make the typically dense
-				research articles easy to read and let you, the reader, gauge your
-				interest in the article we provide a summary of the research and a
-				link to the full article as well.</p>
+			<p style="font-family: Avant garde; font-size: 20px; color: #FFFFFF">
+				SciTweets aims to make scientific research accessible to everyone
+				for free. Through our News Engine, we analyze entire twitter feeds
+				from many research institutions and organizations, and present their
+				current research in a simple interface that is easy to operate. We
+				eliminate the barriers towards accessing current scientific
+				research, namely, the cost of paid-subscriptions and the need to use
+				many different platforms to view the research. <br> <br>
+				By presenting the latest happenings in the scientific world, we
+				provide a platform where you can casually read scientific news,
+				translate textbook reading into real world action, or become exposed
+				to real world science. Through our Blog, we take the complicated
+				research articles, and break them into digestable bits that are easy
+				to understand.
+			</p>
 			<footer> SciTweets Team </footer>
 		</blockquote>
-		<h9 style="font:monaco; font-size: 20; color: #add8e6">
-		Suggestions or Comments? Let us Know at scitweets.filter@gmail.com</h9>
+		<h9 style="font-family:Avant garde; font-size: 25px; color: #add8e6">
+		<center>Suggestions or Comments? E-mail
+			scitweets.filter@gmail.com</center>
+		</h9>
 		<br>
 		<h8 style="font:monaco; font-size: 18; color: #E6E6FA"> We
 		welcome any suggestions, comments, or improvements. Let us know if
@@ -67,48 +77,53 @@
 		Please email scitweets.filter@gmail.com. </h8>
 		<center>
 			<h3
-				style="font: monaco; font-size: 20pt; padding: 10px; color: #add8e6">
+				style="font: monaco; padding: 20px; font-size: 30px; color: #add8e6">
 				The Advantage of Using SciTweets</h3>
 		</center>
-		<p style="font: monaco; font-size: 12pt; color: #FFFFFF">Most
-			science textbooks typically are filled with facts but lack research
-			showing those concepts in action in the real world and when
-			experiments are discussed in these textbooks, they are out of date.
-			SciTweets is the perfect destination whether you are wanting to learn
-			more about science, see theoretical principles in action, or casually
-			scroll through articles. Furthermore, we eliminate the barriers
-			towards accessing scientific research, namely, the cost of
-			paid-subscriptions and the need to use tens of different of platforms
-			to access the latest research.</p>
+		<p style="font-family: Avant garde; font-size: 20px; color: #FFFFFF">Most
+			science textbooks typically are filled with concepts but lack real
+			world experiments showing those concepts in action. When experiments
+			are discussed in these textbooks, they are out of date.To augment
+			your learning experience, and show you the theoretical concepts in
+			action, the SciTweets News Engine serves as a freely accessible
+			catalog of up-to-date research experiments. Through our Blog site, we
+			present these current research articles in a easy to understand way
+			suitable for non-technical people as well! SciTweets is the perfect
+			destination whether you want to learn more about science, see
+			theoretical principles in action, or casually scroll through
+			articles.</p>
 		<center>
-			<h7 style="font:monaco; font-size:20pt; color:#add8e6; padding: 10px">
+			<h7
+				style="font: monaco; padding: 20px; font-size: 30px; color: #add8e6">
 			Meet the Creators </h7>
 		</center>
-		<h4 style="font: monaco; font-size: 16pt; color: #add8e6">Adith
+		<h4 style="font: monaco; font-size: 20px; color: #add8e6">Adith
 			Arun</h4>
 
 
-		<h5 style="font: monaco; font-size: 12pt; color: #FFFFFF">Adith
+		<h5
+			style="padding-bottom: 10px; font-family: Avant garde; font-size: 20px; color: #FFFFFF">Adith
 			Arun will be a senior at Mira Loma High School in the fall of 2017.
 			Adith is an avid science enthusiast. He also loves to code and his
 			favorite language is Python. He wants to start a company in the
-			future. Adith enjoys playing late-night basketball and traveling the
-			world to experience different cultures and people.</h5>
+			future. Adith enjoys playing late-night basketball, and traveling the
+			world.</h5>
 
-		<h6 style="font: monaco; font-size: 16pt; color: #add8e6">Marc
+		<h6 style="font: monaco; font-size: 20px; color: #add8e6">Marc
 			D'Mello</h6>
 
-		<p style="font: monaco; font-size: 12pt; color: #FFFFFF">Marc
+		<p style="font-family: Avant garde; font-size: 20px; color: #FFFFFF">Marc
 			D'Mello will be a senior at Mira Loma High School in the fall of
 			2017. Marc is a self-taught coder. He also enjoys swimming, is a life
-			guard, and plays League of Legends. Marc wants to pursue a career in
-			computer science research in the future.</p>
+			guard, and plays League of Legends. His favorite language is Java.
+			Marc wants to pursue a career in computer science research in the
+			future.</p>
 
 		<div style="position: relative; color: #FFFFFF">
 			<h4
 				style="font-size: 11.5pt; font: monaco; bottom: 0; width: 100%; text-align: center; color: #000000">
-				<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a> <a
-					href="/home"> &nbsp;&nbsp;Main Page</a>
+				<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a>&nbsp;&nbsp; <a
+					href="/newsengine">News Engine</a> &nbsp;&nbsp;<a href="/blogs">Blogs</a>
 			</h4>
 		</div>
 	</div>

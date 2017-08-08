@@ -1,4 +1,4 @@
-package home;
+package newsengine;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -16,8 +16,8 @@ import tweets.TweetService;
 import twitter4j.TwitterException;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/home")
-public class HomeServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/newsengine")
+public class NewsEngineServlet extends HttpServlet {
 	
 	private TweetService tweetService = new TweetService();
 	private CategoryService categoryService = new CategoryService();
@@ -25,14 +25,8 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("categories", categoryService.retrieveCategories());
-		try {
-			request.setAttribute("tweets", tweetService.retrieveTweets("@theNCI"));
-			request.setAttribute("username", "@theNCI");
-			request.setAttribute("name", "National Cancer Institute");
-		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		request.setAttribute("method", "get");
+		request.getRequestDispatcher("/WEB-INF/views/newsengine.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +39,7 @@ public class HomeServlet extends HttpServlet {
 		request.setAttribute("username", request.getParameter("user"));
 		request.setAttribute("name", request.getParameter("name"));
 		request.setAttribute("categories", categoryService.retrieveCategories());
-		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		request.setAttribute("method", "post");
+		request.getRequestDispatcher("/WEB-INF/views/newsengine.jsp").forward(request, response);
 	}
 }
