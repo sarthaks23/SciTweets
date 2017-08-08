@@ -31,7 +31,7 @@ h1 {
 }
 
  h3 {
-    font-family: 'Jazz LET', fantasy;
+    font-family: Jazz LET, fantasy;
     
  }
  h5 {
