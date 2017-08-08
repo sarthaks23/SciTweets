@@ -39,14 +39,15 @@
 }
 </style>
 </head>
-<body style="background-color: #000000">
+<body style="background-color: #000000"
+	onload="showElement('${method}')">
 	<div class="container-fluid">
 		<center>
-			<h1 style="font: monaco; font-size: 20pt; color: #FFFFFF">
-				SciTweets: Keep Current With The Latest Advancements In The
-				Scientific World</h1>
+			<h1 style="font: monaco; font-size: 30pt; color: #FFFFFF">SciTweets
+				News Engine</h1>
 		</center>
 		<center>
+<<<<<<< HEAD:scitweets/src/main/webapp/WEB-INF/views/home.jsp
 			<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Click
 				on a Category to Read the Latest Science News Curated From Many
 				Cutting-Edge Sources</h5>
@@ -54,6 +55,12 @@
 		<center>
 			<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Current
 				Twitter Account Displayed: ${name} (${username})</h5>
+=======
+			<div id="showOnPost">
+				<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Current
+					Handle: ${name} (${username})</h5>
+			</div>
+>>>>>>> 3879e18d7e7711a32f658c9c1c71c174326837ae:scitweets/src/main/webapp/WEB-INF/views/newsengine.jsp
 		</center>
 		<div class="row">
 			<div class="col-sm-3" id="left" style="background-color: #000000;">
@@ -69,7 +76,8 @@
 								<ul class="dropdown-menu">
 									<c:forEach items="${category.accounts}" var="account">
 										<li
-											onclick="post('/home', {user: '${account.username}', name: '${account.name}'}); loadingMessage();"
+											onclick="post('/newsengine', {user: '${account.username}', name: '${account.name}'}); loadingMessage();
+											instantHideInstructions();"
 											style="padding-left: 3px; padding-right: 4px">${account.name}</li>
 									</c:forEach>
 								</ul>
@@ -80,7 +88,21 @@
 			</div>
 			<div class="col-sm-9" id="right" style="background-color: #000000;">
 				<p id="loading"></p>
+<<<<<<< HEAD:scitweets/src/main/webapp/WEB-INF/views/home.jsp
 				<p onload="showInstructions(${instruction})" id="instructions"></p>
+=======
+				<div id="showOnGet" style="display: none;">
+					<p
+						style="font: monaco; font-size: 15pt; color: #add8e6; padding-top: 100px;">
+						1) Click on one of the buttons of your choice on the left side of
+						the screen <br> 2) On the dropdown menu, select an
+						organization of your choice <br> <strong>3) For each
+							article, a hyperlink is provided and a short summary of that
+							article is provided underneath (so you can decide if you want to
+							read more)</strong>
+					</p>
+				</div>
+>>>>>>> 3879e18d7e7711a32f658c9c1c71c174326837ae:scitweets/src/main/webapp/WEB-INF/views/newsengine.jsp
 				<c:forEach items="${tweets}" var="tweet">
 					<h2 style="font: monaco; font-size: 15pt; color: #add8e6">
 						<a href="${tweet.url}" target="_blank"> ${tweet.url}</a>
@@ -90,9 +112,15 @@
 			</div>
 		</div>
 		<h4
+<<<<<<< HEAD:scitweets/src/main/webapp/WEB-INF/views/home.jsp
 			style="font-size: 11.5pt; font: monaco; bottom: 0; width: 100%; text-align: center; color: #FFFFFF">
 			<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a> 
 			<a href = "/about" > About Us</a>
+=======
+			style="font-size: 11.5pt; font: monaco; bottom: 0; width: 100%; text-align: center; color: #000000">
+			<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a>&nbsp;&nbsp;
+			<a href="/newsengine">News Engine</a> &nbsp;&nbsp;<a href="/blogs">Blogs</a>
+>>>>>>> 3879e18d7e7711a32f658c9c1c71c174326837ae:scitweets/src/main/webapp/WEB-INF/views/newsengine.jsp
 		</h4>
 	</div>
 	<script>
@@ -120,6 +148,27 @@
 					"alert alert-info");
 			document.getElementById('loading').setAttribute("style",
 					"font-weight: bold;")
+		}
+	</script>
+	<script>
+		function showElement(method) {
+			if (method == "get") {
+				document.getElementById('showOnGet').setAttribute("style",
+						"display: show");
+				document.getElementById('showOnPost').setAttribute("style",
+						"display: none");
+			} else if (method == "post") {
+				document.getElementsById('showOnPost').setAttribute("style",
+						"display: show");
+				document.getElementById('showOnGet').setAttribute("style",
+						"display: none");
+			}
+		}
+	</script>
+	<script>
+		function instantHideInstructions() {
+			document.getElementById('showOnGet').setAttribute("style",
+					"display: none");
 		}
 	</script>
 	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>

@@ -9,7 +9,7 @@ import com.aylien.textapi.TextAPIException;
 import com.aylien.textapi.parameters.SummarizeParams;
 import com.aylien.textapi.responses.Summarize;
 
-import Properties.RetrieveProperties;
+import properties.RetrieveProperties;
 
 public class SummarizeService {
 
