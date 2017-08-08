@@ -53,7 +53,7 @@
 		</center>
 		<center>
 			<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Current
-				Handle: ${name} (${username})</h5>
+				Twitter Account Displayed: ${name} (${username})</h5>
 		</center>
 		<div class="row">
 			<div class="col-sm-3" id="left" style="background-color: #000000;">
@@ -80,6 +80,7 @@
 			</div>
 			<div class="col-sm-9" id="right" style="background-color: #000000;">
 				<p id="loading"></p>
+				<p onload="showInstructions(${instruction})" id="instructions"></p>
 				<c:forEach items="${tweets}" var="tweet">
 					<h2 style="font: monaco; font-size: 15pt; color: #add8e6">
 						<a href="${tweet.url}" target="_blank"> ${tweet.url}</a>
@@ -90,8 +91,8 @@
 		</div>
 		<h4
 			style="font-size: 11.5pt; font: monaco; bottom: 0; width: 100%; text-align: center; color: #FFFFFF">
-			<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a> <a
-				href="/about"> &nbsp;&nbsp;About Us</a>
+			<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a> 
+			<a href = "/about" > About Us</a>
 		</h4>
 	</div>
 	<script>
@@ -111,10 +112,10 @@
 			document.body.appendChild(form);
 			form.submit();
 		}
-	</script>
+	</script> 
 	<script>
 		function loadingMessage() {
-			document.getElementById('loading').innerHTML = 'Please wait while the page loads. It might take a few seconds...';
+			document.getElementById('loading').innerHTML = 'Please wait while the page loads. It might take a few seconds... Please contact scitweets.filter@gmail.com with any comments, suggesstions, or questions';
 			document.getElementById('loading').setAttribute("class",
 					"alert alert-info");
 			document.getElementById('loading').setAttribute("style",

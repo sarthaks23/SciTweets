@@ -18,30 +18,26 @@ import twitter4j.TwitterException;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/home")
 public class HomeServlet extends HttpServlet {
-	
+
 	private TweetService tweetService = new TweetService();
 	private CategoryService categoryService = new CategoryService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("categories", categoryService.retrieveCategories());
-		try {
-			request.setAttribute("tweets", tweetService.retrieveTweets("@theNCI"));
-			request.setAttribute("username", "@theNCI");
-			request.setAttribute("name", "National Cancer Institute");
-		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		request.setAttribute("instruction", "get");
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			request.setAttribute("tweets", tweetService.retrieveTweets(request.getParameter("user")));
-		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+		} catch (SQLException | TextAPIException | TwitterException | InstantiationException | IllegalAccessException
+				| ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("instruction", "post");
 		request.setAttribute("username", request.getParameter("user"));
 		request.setAttribute("name", request.getParameter("name"));
 		request.setAttribute("categories", categoryService.retrieveCategories());
