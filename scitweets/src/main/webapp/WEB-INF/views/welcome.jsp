@@ -133,7 +133,7 @@ h1 {
                         <h3> Keep Current With the Latest Advancements In The Scientific World</h3>
                         <ul class="list-inline buttons ">
                              <li>
-                                <a href="/blogs" class="btn btn-default btn-lg"> <!-- change the button type? and uppercase, coloring? -->
+                                <a href="/blogs" class="btn btn-default btn-lg" style="display: none;"> <!-- change the button type? and uppercase, coloring? -->
                                     <span class="stylebutton">Blog</span></a>
                             </li>
                             <li>

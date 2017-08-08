@@ -126,7 +126,7 @@
 		<center>
 			<h1 class = "rainbow"; style="font-family:Raleway; font-weight: 400;font-size: 50px; color: #FFFFFF">About SciTweets</h1>
 			<ul class="list-inline buttons ">
-                             <li>
+                             <li style="display: none;">
                                 <a href="/blogs" class="btn btn-default btn-sm"> <!-- change the button type? and uppercase, coloring? -->
                                     <span class="buttonstyle">Blog</span></a>
                             </li>
