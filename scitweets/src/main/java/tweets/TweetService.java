@@ -50,7 +50,8 @@ public class TweetService {
 					int year = calendar.get(Calendar.YEAR);
 					if (DBConnect.selectFromLinkcache(url) != null) {
 						String description = DBConnect.selectFromLinkcache(url)[1];
-						if (!description.equals("Invalid") && !summariesOnPage.contains(description)) {
+						boolean isValid = DBConnect.checkIsValid(url);
+						if (isValid && !summariesOnPage.contains(description)) {
 							tweets.add(new STweet(user.getName(), statusText, url, description, month, year));
 							urlsOnPage.add(url);
 							summariesOnPage.add(description);
@@ -59,14 +60,14 @@ public class TweetService {
 						String description = SummarizeService.summarize(url, 4);
 						if (description != null && !description.isEmpty() && !summariesOnPage.contains(description)) {
 							tweets.add(new STweet(user.getName(), statusText, url, description, month, year));
-							DBConnect.insertIntoLinkcache(url, description);
+							DBConnect.insertIntoLinkcache(url, description, true);
 							urlsOnPage.add(url);
 							summariesOnPage.add(description);
 						} else {
-							DBConnect.insertIntoLinkcache(url, "Invalid");
+							DBConnect.insertIntoLinkcache(url, null, false);
 						}
-					} else if (!Filter.checkTweet(url)) {
-						DBConnect.insertIntoLinkcache(url, "Invalid");
+					} else {
+						DBConnect.insertIntoLinkcache(url, null, false);
 					}
 				}
 			}
