@@ -33,13 +33,7 @@ This file can be placed next to the Aylien.properties file in the resources fold
 This file is included in github. However, you will need to change your username and password as well as the db url to match whatever you have setup.
 
 ## Setting up the database
-To work properly, a database is required. This webapp uses a MySQL 5.1.13 driver. The following SQL code should set up the tables properly.
-```
-CREATE TABLE handles (name VARCHAR(50), username VARCHAR(50), CategoryID int);
-CREATE TABLE linkcache (url VARCHAR(300), summary TEXT);
-CREATE TABLE category (CategoryID int, CategoryName VARCHAR(20));
-```
-If you decide to change the names of these tables, you will need to modify the DBConnect class.
+The database has changed quite a bit. I might upload the .sql file later, but as of now, you may be able to figure it out without the database. 
 
 ## Modifying the filter
 An easy way to change the bahaviour of this webapp is to modify the wordlist contained in Filter.txt. By adding words to it, the filter will become better and more accurate. Of course, there are other ways of filtering the tweets that are probably much better, but for now, changing the Filter.txt file is the easiest way to improve the filter itself without having to completely rewrite the whole thing.
