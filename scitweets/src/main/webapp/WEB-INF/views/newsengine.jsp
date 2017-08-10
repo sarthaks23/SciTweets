@@ -376,7 +376,7 @@ h4 {
 	</script>
 	<script>
 		function loadingMessage() {
-			document.getElementById('loading').innerHTML = 'Please wait. It might take a few seconds...';
+			document.getElementById('loading').innerHTML = 'Please wait. There is a lot to process so it might take up to 2 minutes...';
 			document.getElementById('loading').setAttribute("class",
 					"alert alert-info");
 		}
