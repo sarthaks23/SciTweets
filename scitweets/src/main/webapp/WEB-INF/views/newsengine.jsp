@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Scitweets - Analyzing twitter feeds to display the latest
 	research in science</title>
@@ -33,34 +34,124 @@
 	overflow-y: scroll;
 	padding: 20px;
 }
-
 .affix {
 	top: 20px
 }
+.rainbow {
+   /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 20s; 
+  -webkit-animation-iteration-count: 2;
+  
+  /* Internet Explorer */
+  -ms-animation: rainbow 20s;
+  -ms-animation-iteration-count:2;
+  
+  
+  /* Standar Syntax */
+  animation: rainbow 20s; 
+  animation-iteration-count: 2;
+  
+  font-family:Raleway; 
+  font-size: 100px;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+/* Internet Explorer */
+@-ms-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+
+/* Standar Syntax */
+@keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+.buttonstyle{
+	text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: avant garde;
+    letter-spacing: 2px;
+}
+.styleInstructions{
+	font-size: 15px;
+	font-weight:400;
+	font-family:raleway;
+	color: #add8e6;
+	padding-top: 80px
+}
+.description{
+	font-size: 15px;
+	font-weight:300;
+	font-family: Avant Garde;
+	color: white;
+}
+.url{
+	font-size: 10px;
+	font-weight:200;
+	font-family: Raleway;
+	color: #add8e6
+}
+.break{
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid white;}
+ h4 {
+ 	position: absolute;
+ 	top: 3px;
+ 	left:3px;
+ }
 </style>
 </head>
 <body style="background-color: #000000"
 	onload="showElement('${method}')">
 	<div class="container-fluid">
+		   <h4> 
+        			<a href = "mailto:scitweets.filter@gmail.com"> 
+        				<button class = "btn btn-default btn-sm">
+        					<span class = "glyphicon glyphicon-envelope"> </span> 
+        					<span class = "buttonstyle"> Contact</span>
+        					
+        				</button>
+        			</a>
+        	</h4>
 		<center>
-			<h1 style="font: monaco; font-size: 30pt; color: #FFFFFF">SciTweets
+			<h1 class = "rainbow"; style="font-family:Raleway; font-weight: 400;font-size: 50px; color: #FFFFFF">SciTweets
 				News Engine</h1>
+			<ul class="list-inline buttons ">
+                             <li>
+                                <a href="/blogs" class="btn btn-default btn-sm"> <!-- change the button type? and uppercase, coloring? -->
+                                    <span class="buttonstyle">Blog</span></a>
+                            </li>
+                            <li>
+                                <a href="/home" class="btn btn-default btn-sm">
+                                    <span class="buttonstyle">Home</span></a>
+                            </li>
+                            <li>
+                                <a href="/about" class="btn btn-default btn-sm">
+                                    <span class="buttonstyle">About Us</span></a>
+                            </li>         
+                        </ul>
 		</center>
 		<center>
-<<<<<<< HEAD:scitweets/src/main/webapp/WEB-INF/views/home.jsp
-			<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Click
-				on a Category to Read the Latest Science News Curated From Many
-				Cutting-Edge Sources</h5>
-		</center>
-		<center>
-			<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Current
-				Twitter Account Displayed: ${name} (${username})</h5>
-=======
 			<div id="showOnPost">
-				<h5 style="font: monaco; font-size: 13pt; color: #add8e6">Current
-					Handle: ${name} (${username})</h5>
+				<h5 style="font-family: Avant Garde; font-size: 20px; color: #add8e6">Current
+					Account Displayed: ${name} (${username})</h5>
 			</div>
->>>>>>> 3879e18d7e7711a32f658c9c1c71c174326837ae:scitweets/src/main/webapp/WEB-INF/views/newsengine.jsp
 		</center>
 		<div class="row">
 			<div class="col-sm-3" id="left" style="background-color: #000000;">
@@ -69,9 +160,9 @@
 					<c:forEach items="${categories}" var="category">
 						<li style="padding-bottom: 10px">
 							<div class="dropdown">
-								<button class="btn btn-primary dropdown-toggle" type="button"
+								<button class="btn btn-default btn-md dropdown-toggle" type="button"
 									data-toggle="dropdown">
-									${category.categoryName} <span class="caret"></span>
+									<span class = "buttonstyle">${category.categoryName} </span><span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
 									<c:forEach items="${category.accounts}" var="account">
@@ -88,40 +179,23 @@
 			</div>
 			<div class="col-sm-9" id="right" style="background-color: #000000;">
 				<p id="loading"></p>
-<<<<<<< HEAD:scitweets/src/main/webapp/WEB-INF/views/home.jsp
-				<p onload="showInstructions(${instruction})" id="instructions"></p>
-=======
 				<div id="showOnGet" style="display: none;">
-					<p
-						style="font: monaco; font-size: 15pt; color: #add8e6; padding-top: 100px;">
-						1) Click on one of the buttons of your choice on the left side of
-						the screen <br> 2) On the dropdown menu, select an
-						organization of your choice <br> <strong>3) For each
-							article, a hyperlink is provided and a short summary of that
-							article is provided underneath (so you can decide if you want to
-							read more)</strong>
+					<p class = "styleInstructions">
+						1) Click on one of the buttons on the left side of
+						the screen <br><br> 2) On the dropdown menu, select an
+						organization <br><br> 3) For each
+							article, a hyperlink and a short summary (underneath the link) is provided 
 					</p>
 				</div>
->>>>>>> 3879e18d7e7711a32f658c9c1c71c174326837ae:scitweets/src/main/webapp/WEB-INF/views/newsengine.jsp
 				<c:forEach items="${tweets}" var="tweet">
-					<h2 style="font: monaco; font-size: 15pt; color: #add8e6">
-						<a href="${tweet.url}" target="_blank"> ${tweet.url}</a>
+					<h3 class = "description"><strong>Summary:</strong> ${tweet.description}</h3>
+					<h2 class = "url">
+						<a href="${tweet.url}" target="_blank" ${tweet.url}> Link To Full Article</a>
 					</h2>
-					<h3 style="font: monaco; font-size: 12pt; color: #FFFFFF">${tweet.description}</h3>
+					<hr class="break">
 				</c:forEach>
 			</div>
 		</div>
-		<h4
-<<<<<<< HEAD:scitweets/src/main/webapp/WEB-INF/views/home.jsp
-			style="font-size: 11.5pt; font: monaco; bottom: 0; width: 100%; text-align: center; color: #FFFFFF">
-			<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a> 
-			<a href = "/about" > About Us</a>
-=======
-			style="font-size: 11.5pt; font: monaco; bottom: 0; width: 100%; text-align: center; color: #000000">
-			<a href="mailto:scitweets.filter@gmail.com"> Contact Us</a>&nbsp;&nbsp;
-			<a href="/newsengine">News Engine</a> &nbsp;&nbsp;<a href="/blogs">Blogs</a>
->>>>>>> 3879e18d7e7711a32f658c9c1c71c174326837ae:scitweets/src/main/webapp/WEB-INF/views/newsengine.jsp
-		</h4>
 	</div>
 	<script>
 		function post(path, params) {
@@ -140,14 +214,12 @@
 			document.body.appendChild(form);
 			form.submit();
 		}
-	</script> 
+	</script>
 	<script>
 		function loadingMessage() {
-			document.getElementById('loading').innerHTML = 'Please wait while the page loads. It might take a few seconds... Please contact scitweets.filter@gmail.com with any comments, suggesstions, or questions';
+			document.getElementById('loading').innerHTML = 'Please wait. It might take a few seconds...';
 			document.getElementById('loading').setAttribute("class",
 					"alert alert-info");
-			document.getElementById('loading').setAttribute("style",
-					"font-weight: bold;")
 		}
 	</script>
 	<script>
