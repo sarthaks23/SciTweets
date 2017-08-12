@@ -216,4 +216,47 @@ orange
 		</div>
 	</div>
 </body>
+</html>		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script',
+			'https://www.google-analytics.com/analytics.js', 'ga');
+	ga('create', 'UA-103553508-1', 'auto');
+	ga('send', 'pageview');
+</script>
+</head>
+<body>
+<body>
+	<div class="Opener">
+		<div class="container">
+			<h5>
+				<a href="mailto:scitweets.filter@gmail.com">
+					<button class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-envelope"> </span> <span
+							class="stylebutton"> Contact</span>
+
+					</button>
+				</a>
+			</h5>
+			<div class="spacer">
+				<h1 class="rainbow">SciTweets</h1>
+				<h3>Keep Current With the Latest Advancements In The Scientific
+					World</h3>
+				<ul class="list-inline buttons ">
+					<li><a href="/blogs" class="btn btn-default btn-lg"
+						style="display: none;"> <!-- change the button type? and uppercase, coloring? -->
+							<span class="stylebutton">Blog</span></a></li>
+					<li><a href="/newsengine" class="btn btn-default btn-lg">
+							<span class="stylebutton">News Engine</span>
+					</a></li>
+					<li><a href="/about" class="btn btn-default btn-lg"> <span
+							class="stylebutton">About Us</span></a></li>
+					<li><a href="/customsearch" class="btn btn-default btn-lg"> <span
+							class="stylebutton">Custom Tweet Search</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
 </html>
