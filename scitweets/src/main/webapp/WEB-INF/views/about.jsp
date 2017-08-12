@@ -38,30 +38,54 @@
 
 40%{
 color
+
+
 :
+
  
+
 yellow
+
+
 ;
 }
 60%{
 color
+
+
 :
+
  
+
 green
+
+
 ;
 }
 80%{
 color
+
+
 :
+
  
+
 blue
+
+
 ;
 }
 100%{
 color
+
+
 :
+
  
+
 orange
+
+
 ;
 }
 }
@@ -73,30 +97,54 @@ orange
 
 40%{
 color
+
+
 :
+
  
+
 yellow
+
+
 ;
 }
 60%{
 color
+
+
 :
+
  
+
 green
+
+
 ;
 }
 80%{
 color
+
+
 :
+
  
+
 blue
+
+
 ;
 }
 100%{
 color
+
+
 :
+
  
+
 orange
+
+
 ;
 }
 }
@@ -109,30 +157,54 @@ keyframes rainbow { 20%{
 
 40%{
 color
+
+
 :
+
  
+
 yellow
+
+
 ;
 }
 60%{
 color
+
+
 :
+
  
+
 green
+
+
 ;
 }
 80%{
 color
+
+
 :
+
  
+
 blue
+
+
 ;
 }
 100%{
 color
+
+
 :
+
  
+
 orange
+
+
 ;
 }
 }
@@ -214,6 +286,9 @@ h10 {
 						class="buttonstyle">Home</span></a></li>
 				<li><a href="/newsengine" class="btn btn-default btn-sm"> <span
 						class="buttonstyle">News Engine</span></a></li>
+				<li><a href="/customsearch" class="btn btn-default btn-sm">
+						<span class="buttonstyle">Custom Tweet Search</span>
+				</a></li>
 			</ul>
 		</center>
 		<center>

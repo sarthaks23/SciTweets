@@ -79,7 +79,7 @@ public class TweetService {
 			calendar.setTime(date);
 			int month = calendar.get(Calendar.MONTH);
 			int year = calendar.get(Calendar.YEAR);
-			tweets.add(new STweet("", "", "", "There seems to be no valid tweets :(", month, year));
+			tweets.add(new STweet(null, null, null, "There seems to be no valid tweets :(", month, year));
 		}
 		return tweets;
 	}

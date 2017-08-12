@@ -62,9 +62,11 @@ public class DBConnect {
 		while (resultset.next()) {
 			boolean isValid = resultset.getBoolean("isValid");
 			if (isValid) {
+				conn.close();
 				return true;
 			}
 		}
+		conn.close();
 		return false;
 	}
 
@@ -117,6 +119,7 @@ public class DBConnect {
 		ps.setString(1, username);
 		ResultSet resultset = ps.executeQuery();
 		resultset.next();
+		conn.close();
 		return resultset.getInt("Id");
 	}
 

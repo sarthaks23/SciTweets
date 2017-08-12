@@ -64,11 +64,17 @@
 color
 
 
+
+
 :
+
 
  
 
+
 yellow
+
+
 
 
 ;
@@ -77,11 +83,17 @@ yellow
 color
 
 
+
+
 :
+
 
  
 
+
 green
+
+
 
 
 ;
@@ -90,11 +102,17 @@ green
 color
 
 
+
+
 :
+
 
  
 
+
 blue
+
+
 
 
 ;
@@ -103,11 +121,17 @@ blue
 color
 
 
+
+
 :
+
 
  
 
+
 orange
+
+
 
 
 ;
@@ -123,11 +147,17 @@ orange
 color
 
 
+
+
 :
+
 
  
 
+
 yellow
+
+
 
 
 ;
@@ -136,11 +166,17 @@ yellow
 color
 
 
+
+
 :
+
 
  
 
+
 green
+
+
 
 
 ;
@@ -149,11 +185,17 @@ green
 color
 
 
+
+
 :
+
 
  
 
+
 blue
+
+
 
 
 ;
@@ -162,11 +204,17 @@ blue
 color
 
 
+
+
 :
+
 
  
 
+
 orange
+
+
 
 
 ;
@@ -183,11 +231,17 @@ keyframes rainbow { 20%{
 color
 
 
+
+
 :
+
 
  
 
+
 yellow
+
+
 
 
 ;
@@ -196,11 +250,17 @@ yellow
 color
 
 
+
+
 :
+
 
  
 
+
 green
+
+
 
 
 ;
@@ -209,11 +269,17 @@ green
 color
 
 
+
+
 :
+
 
  
 
+
 blue
+
+
 
 
 ;
@@ -222,11 +288,17 @@ blue
 color
 
 
+
+
 :
+
 
  
 
+
 orange
+
+
 
 
 ;
@@ -299,6 +371,9 @@ h4 {
 						class="buttonstyle">Home</span></a></li>
 				<li><a href="/about" class="btn btn-default btn-sm"> <span
 						class="buttonstyle">About Us</span></a></li>
+				<li><a href="/customsearch" class="btn btn-default btn-sm">
+						<span class="buttonstyle">Custom Tweet Search</span>
+				</a></li>
 			</ul>
 		</center>
 		<center>
@@ -376,7 +451,7 @@ h4 {
 	</script>
 	<script>
 		function loadingMessage() {
-			document.getElementById('loading').innerHTML = 'Please wait. There is a lot to process so it might take up to 2 minutes...';
+			document.getElementById('loading').innerHTML = 'Please wait. There is a lot to process so it might take up to 2 minutes...";
 			document.getElementById('loading').setAttribute("class",
 					"alert alert-info");
 		}
@@ -405,3 +480,4 @@ h4 {
 	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
+</html>
