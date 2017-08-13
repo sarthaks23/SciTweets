@@ -63,75 +63,42 @@
 	
 	.rainbow {
 		/* Chrome, Safari, Opera */
-		-webkit-animation: rainbow 35s infinite;
+		-webkit-animation: rainbow 20s;
+		-webkit-animation-iteration-count: 2;
 		/* Internet Explorer */
-		-ms-animation: rainbow 25s infinite;
+		-ms-animation: rainbow 20s;
+		-ms-animation-iteration-count: 2;
 		/* Standar Syntax */
-		animation: rainbow 25s infinite;
+		animation: rainbow 20s;
+		animation-iteration-count: 2;
 		font-family: Raleway;
 		font-size: 100px;
 	}
-	
+
 	/* Chrome, Safari, Opera */
-	@
-	-webkit-keyframes rainbow { 
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@-webkit-keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 	/* Internet Explorer */
-	@
-	-ms-keyframes rainbow { 	
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@-ms-keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 	
 	/* Standar Syntax */
-	@
-	keyframes rainbow { 	
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 </style>
 <script>
@@ -146,7 +113,6 @@
 		m.parentNode.insertBefore(a, m)
 	})(window, document, 'script',
 			'https://www.google-analytics.com/analytics.js', 'ga');
-
 	ga('create', 'UA-103553508-1', 'auto');
 	ga('send', 'pageview');
 </script>
@@ -178,7 +144,7 @@
 					<li><a href="/about" class="btn btn-default btn-lg"> <span
 							class="stylebutton">About Us</span></a></li>
 					<li><a href="/customsearch" class="btn btn-default btn-lg"> <span
-							class="stylebutton">Custom Tweet Search</span></a></li>
+							class="stylebutton">Custom Search</span></a></li>
 				</ul>
 			</div>
 		</div>

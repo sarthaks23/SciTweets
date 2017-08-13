@@ -13,85 +13,50 @@
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
 <style>
-.columnscroll {
-	overflow-y: scroll;
-	padding: 20px;
-}
+	.columnscroll {
+		overflow-y: scroll;
+		padding: 20px;
+	}
+	.rainbow {
+		/* Chrome, Safari, Opera */
+		-webkit-animation: rainbow 20s;
+		-webkit-animation-iteration-count: 2;
+		/* Internet Explorer */
+		-ms-animation: rainbow 20s;
+		-ms-animation-iteration-count: 2;
+		/* Standar Syntax */
+		animation: rainbow 20s;
+		animation-iteration-count: 2;
+		font-family: Raleway;
+		font-size: 100px;
+	}
 
-.rainbow {
 	/* Chrome, Safari, Opera */
-	-webkit-animation: rainbow 20s;
-	-webkit-animation-iteration-count: 3;
-	/* Internet Explorer */
-	-ms-animation: rainbow 20s;
-	-ms-animation-iteration-count: 3;
-	/* Standar Syntax */
-	animation: rainbow 20s;
-	animation-iteration-count: 3;
-}
-
-	/* Chrome, Safari, Opera */
-	@
-	-webkit-keyframes rainbow { 
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@-webkit-keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 	/* Internet Explorer */
-	@
-	-ms-keyframes rainbow { 	
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@-ms-keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 	
 	/* Standar Syntax */
-	@
-	keyframes rainbow { 	
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
-	.buttonstyle {
+		.buttonstyle {
 		text-transform: uppercase;
 		font-size: 13px;
 		font-weight: 400;
@@ -130,7 +95,7 @@
 		color: lightpink;
 		text-align: left;
 		padding-top: 3px
-}
+	}
 </style>
 <script>
 	(function(i, s, o, g, r, a, m) {
@@ -158,8 +123,7 @@
 			</button>
 		</a> </h10>
 		<center>
-			<h1 class="rainbow"
-				; style="font-family: Raleway; font-weight: 400; font-size: 50px; color: #FFFFFF">About
+			<h1 class="rainbow"; style="font-family: Raleway; font-weight: 400; font-size: 50px; color: #FFFFFF">About
 				SciTweets</h1>
 			<ul class="list-inline buttons ">
 				<li style="display: none;"><a href="/blogs"
@@ -170,7 +134,7 @@
 				<li><a href="/newsengine" class="btn btn-default btn-sm"> <span
 						class="buttonstyle">News Engine</span></a></li>
 				<li><a href="/customsearch" class="btn btn-default btn-sm">
-						<span class="buttonstyle">Custom Tweet Search</span>
+						<span class="buttonstyle">Custom Search</span>
 				</a></li>
 			</ul>
 		</center>

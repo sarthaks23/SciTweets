@@ -55,65 +55,29 @@
 	}
 
 	/* Chrome, Safari, Opera */
-	@
-	-webkit-keyframes rainbow { 
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@-webkit-keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 	/* Internet Explorer */
-	@
-	-ms-keyframes rainbow { 	
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@-ms-keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
-	
+
 	/* Standar Syntax */
-	@
-	keyframes rainbow { 	
-		20%{
-			color: red;
-		}
-		
-		40%{
-			color: yellow;
-		}
-		60%{
-			color: green;
-		}
-		80%{
-			color: blue;
-		}
-		100%{
-			color: orange;
-		}
+	@keyframes rainbow{
+		20%{color: red;}
+		40%{color: yellow;}
+		60%{color: green;}
+		80%{color: blue;}
+		100%{color: orange;}	
 	}
 	.buttonstyle {
 		text-transform: uppercase;
@@ -171,7 +135,7 @@
 			</a>
 		</h4>
 		<center>
-			<h1 class="rainbow;"
+			<h1 class="rainbow";
 				style="font-family: Raleway; font-weight: 400; font-size: 50px; color: #FFFFFF">SciTweets
 				News Engine</h1>
 			<ul class="list-inline buttons ">
@@ -183,7 +147,7 @@
 				<li><a href="/about" class="btn btn-default btn-sm"> <span
 						class="buttonstyle">About Us</span></a></li>
 				<li><a href="/customsearch" class="btn btn-default btn-sm">
-						<span class="buttonstyle">Custom Tweet Search</span>
+						<span class="buttonstyle">Custom Search</span>
 				</a></li>
 			</ul>
 		</center>
@@ -262,7 +226,7 @@
 	</script>
 	<script>
 		function loadingMessage() {
-			document.getElementById('loading').innerHTML = 'Please wait. There is a lot to process so it might take up to 2 minutes...';
+			document.getElementById('loading').innerHTML = 'Please wait, the engine is working';
 			document.getElementById('loading').setAttribute("class",
 					"alert alert-info");
 		}
