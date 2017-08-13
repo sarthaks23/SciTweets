@@ -111,7 +111,7 @@
 	}
 	
 	.styleFORM {
-		maring: 0;
+		margin: 0;
 		padding-top: 5%
 	}
 </style>
@@ -141,8 +141,8 @@
 						</a></li>
 					</ul>
 				</center>
-				<div class="styleFORM"
-					; style="color: black; font-family: Raleway; font-weight: bold; font-size: 10px">
+				<div class="styleFORM;"
+					style="color: black; font-family: Raleway; font-weight: bold; font-size: 10px">
 					<h6 style="font-family: Avant Garde; font-size: 15px">
 						<form onsubmit="loadingMessage();">
 							<input type="text" name="handlerequest"
@@ -151,7 +151,7 @@
 					</h6>
 					<div id="loading">
 						<h2 id="resultHTML"
-							style="display: none; font-family: Avant Garde; font-size: 15px">Results:</h2>
+							style="display: none; font-family: Avant Garde; font-size: 15px; color: white;">Results:</h2>
 						<h3 class="alert alert-warning"
 							style="display: none; font-family: Avant Garde; font-size: 15px"
 							id="noTweetAlert">There are no valid tweets from this user.
