@@ -1,64 +1,86 @@
 package tweets;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import com.aylien.textapi.TextAPIException;
+
+import dbconnection.DBConnect;
+import filter.Filter;
+import summarize.SummarizeService;
+import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TweetService {
 	private static List<STweet> tweets = new ArrayList<STweet>();
-	public static final String URL_REGEX = "^((https?|ftp)://|(www|ftp)\\.)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$";
 	private static TwitterFactory tf = new TwitterFactory();
 	private static Twitter twitter = tf.getInstance();
 	private String url;
 
-	public List<STweet> retrieveTweets(String username) {
+	public List<STweet> retrieveTweets(String username) throws IOException, SQLException, TextAPIException,
+			TwitterException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		if (!tweets.isEmpty()) {
 			tweets.clear();
 		}
-		try {
-			User user = twitter.showUser(username);
-			long userID = user.getId();
-			List<Status> statuses = twitter.getUserTimeline(userID);
-			for (Status status : statuses) {
-				if (hasURL(status.getText())) {
-					//for loop will get the last url mentioned in tweet
-					for(int i=0; i<status.getURLEntities().length; i++){
-						url = status.getURLEntities()[i].getExpandedURL();
+		User user = twitter.showUser(username);
+		long userID = user.getId();
+		Paging p = new Paging();
+		p.setCount(100);
+		List<Status> statuses = twitter.getUserTimeline(userID, p);
+		List<String> urlsOnPage = new ArrayList<String>();
+		List<String> summariesOnPage = new ArrayList<String>();
+		for (Status status : statuses) {
+			if (Filter.hasURL(status)) {
+				url = status.getURLEntities()[0].getExpandedURL();
+				if (!urlsOnPage.contains(url)) {
+					String statusText = ModifyTweet.deleteSecondURL(status.getText());
+					Date date = status.getCreatedAt();
+					Calendar calendar = Calendar.getInstance();
+					calendar.setTime(date);
+					int month = calendar.get(Calendar.MONTH);
+					int year = calendar.get(Calendar.YEAR);
+					int authorId = DBConnect.selectAuthorId(username);
+					if (DBConnect.selectFromLinkcache(url) != null) {
+						String description = DBConnect.selectFromLinkcache(url)[1];
+						boolean isValid = DBConnect.checkIsValid(url);
+						if (isValid && !summariesOnPage.contains(description)) {
+							tweets.add(new STweet(user.getName(), statusText, url, description, month, year));
+							urlsOnPage.add(url);
+							summariesOnPage.add(description);
+						}
+					} else if (Filter.checkTweet(url)) {
+						String description = SummarizeService.summarize(url, 4);
+						if (description != null && !description.isEmpty() && !summariesOnPage.contains(description)) {
+							tweets.add(new STweet(user.getName(), statusText, url, description, month, year));
+							DBConnect.insertIntoLinkcache(url, description, authorId, true);
+							urlsOnPage.add(url);
+							summariesOnPage.add(description);
+						} else {
+							DBConnect.insertIntoLinkcache(url, null, authorId, false);
+						}
+					} else {
+						DBConnect.insertIntoLinkcache(url, null, authorId, false);
 					}
-					tweets.add(new STweet(user.getName(), status.getText(), url,
-							"Description to be added later"));
 				}
 			}
-		} catch (TwitterException te) {
-			te.printStackTrace();
-			System.out.println("Failed to search tweets: " + te.getMessage());
-			System.exit(-1);
+		}
+		if (tweets.isEmpty()) {
+			Date date = new Date();
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			int month = calendar.get(Calendar.MONTH);
+			int year = calendar.get(Calendar.YEAR);
+			tweets.add(new STweet(null, null, null, "There seems to be no valid tweets :(", month, year));
 		}
 		return tweets;
-	}
-
-	// Filter for right now, will be updated
-	private static boolean hasURL(String t) {
-		int URLCounter = 0;
-		Pattern p = Pattern.compile(URL_REGEX);
-		String[] parts = t.split("\\s+");
-		for (String part : parts) {
-			Matcher m = p.matcher(part);
-			if (m.find()) {
-				URLCounter++;
-			}
-			if (URLCounter == 2) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
