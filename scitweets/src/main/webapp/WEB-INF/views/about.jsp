@@ -30,223 +30,106 @@
 	animation-iteration-count: 3;
 }
 
-/* Chrome, Safari, Opera */
-@
--webkit-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-
-
-:
-
- 
-
-yellow
-
-
-;
-}
-60%{
-color
-
-
-:
-
- 
-
-green
-
-
-;
-}
-80%{
-color
-
-
-:
-
- 
-
-blue
-
-
-;
-}
-100%{
-color
-
-
-:
-
- 
-
-orange
-
-
-;
-}
-}
-/* Internet Explorer */
-@
--ms-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-
-
-:
-
- 
-
-yellow
-
-
-;
-}
-60%{
-color
-
-
-:
-
- 
-
-green
-
-
-;
-}
-80%{
-color
-
-
-:
-
- 
-
-blue
-
-
-;
-}
-100%{
-color
-
-
-:
-
- 
-
-orange
-
-
-;
-}
-}
-
-/* Standar Syntax */
-@
-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-
-
-:
-
- 
-
-yellow
-
-
-;
-}
-60%{
-color
-
-
-:
-
- 
-
-green
-
-
-;
-}
-80%{
-color
-
-
-:
-
- 
-
-blue
-
-
-;
-}
-100%{
-color
-
-
-:
-
- 
-
-orange
-
-
-;
-}
-}
-.buttonstyle {
-	text-transform: uppercase;
-	font-size: 13px;
-	font-weight: 400;
-	font-family: avant garde;
-	letter-spacing: 2px;
-}
-
-h10 {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-}
-
-.headers {
-	font-family: Raleway;
-	font-weight: 400;
-	font-size: 34px;
-	color: #add8e6;
-	text-align: left;
-}
-
-.text {
-	font-family: avant garde;
-	font-weight: 200;
-	font-size: 18px;
-	color: white;
-	text-align: left;
-	padding-top: 6px;
-	padding-bottom: 3px;
-}
-
-.people {
-	font-family: Raleway;
-	font-weight: 300;
-	font-size: 25px;
-	color: lightpink;
-	text-align: left;
-	padding-top: 3px
+	/* Chrome, Safari, Opera */
+	@
+	-webkit-keyframes rainbow { 
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
+	/* Internet Explorer */
+	@
+	-ms-keyframes rainbow { 	
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
+	
+	/* Standar Syntax */
+	@
+	keyframes rainbow { 	
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
+	.buttonstyle {
+		text-transform: uppercase;
+		font-size: 13px;
+		font-weight: 400;
+		font-family: avant garde;
+		letter-spacing: 2px;
+	}
+	
+	h10 {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+	}
+	
+	.headers {
+		font-family: Raleway;
+		font-weight: 400;
+		font-size: 34px;
+		color: #add8e6;
+		text-align: left;
+	}
+	
+	.text {
+		font-family: avant garde;
+		font-weight: 200;
+		font-size: 18px;
+		color: white;
+		text-align: left;
+		padding-top: 6px;
+		padding-bottom: 3px;
+	}
+	
+	.people {
+		font-family: Raleway;
+		font-weight: 300;
+		font-size: 25px;
+		color: lightpink;
+		text-align: left;
+		padding-top: 3px
 }
 </style>
 <script>

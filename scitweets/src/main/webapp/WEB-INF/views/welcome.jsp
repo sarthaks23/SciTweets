@@ -16,167 +16,123 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.Opener {
-	height: 100%;
-	width: 100%;
-	color: white;
-	text-align: center;
-	background-color: black;
-	position: fixed;
-	overflow: auto;
-}
-
-.spacer {
-	margin: 0;
-	padding-top: 15%;
-}
-
-h1 {
-	margin: 0;
-}
-
-h3 {
-	font-family: Jazz LET, fantasy;
-}
-
-h5 {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-}
-
-.stylebutton {
-	/* change some of this up*/
-	text-transform: uppercase;
-	font-size: 13px;
-	font-weight: 400;
-	font-family: avant garde;
-	letter-spacing: 2px;
-}
-
-.missionrainbow {
-	padding-top: 100px;
-	font-family: Raleway;
-	font-size: 40px;
-	font-weight: 400;
-}
-
-.rainbow {
+	.Opener {
+		height: 100%;
+		width: 100%;
+		color: white;
+		text-align: center;
+		background-color: black;
+		position: fixed;
+		overflow: auto;
+	}
+	
+	.spacer {
+		margin: 0;
+		padding-top: 15%;
+	}
+	
+	h1 {
+		margin: 0;
+	}
+	
+	h3 {
+		font-family: Jazz LET, fantasy;
+	}
+	
+	h5 {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+	}
+	
+	.stylebutton {
+		/* change some of this up*/
+		text-transform: uppercase;
+		font-size: 13px;
+		font-weight: 400;
+		font-family: avant garde;
+		letter-spacing: 2px;
+	}
+	
+	.missionrainbow {
+		padding-top: 100px;
+		font-family: Raleway;
+		font-size: 40px;
+		font-weight: 400;
+	}
+	
+	.rainbow {
+		/* Chrome, Safari, Opera */
+		-webkit-animation: rainbow 35s infinite;
+		/* Internet Explorer */
+		-ms-animation: rainbow 25s infinite;
+		/* Standar Syntax */
+		animation: rainbow 25s infinite;
+		font-family: Raleway;
+		font-size: 100px;
+	}
+	
 	/* Chrome, Safari, Opera */
-	-webkit-animation: rainbow 35s infinite;
+	@
+	-webkit-keyframes rainbow { 
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
 	/* Internet Explorer */
-	-ms-animation: rainbow 25s infinite;
+	@
+	-ms-keyframes rainbow { 	
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
+	
 	/* Standar Syntax */
-	animation: rainbow 25s infinite;
-	font-family: Raleway;
-	font-size: 100px;
-}
-
-/* Chrome, Safari, Opera */
-@
--webkit-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-:
- 
-yellow
-;
-}
-60%{
-color
-:
- 
-green
-;
-}
-80%{
-color
-:
- 
-blue
-;
-}
-100%{
-color
-:
- 
-orange
-;
-}
-}
-/* Internet Explorer */
-@
--ms-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-:
- 
-yellow
-;
-}
-60%{
-color
-:
- 
-green
-;
-}
-80%{
-color
-:
- 
-blue
-;
-}
-100%{
-color
-:
- 
-orange
-;
-}
-}
-
-/* Standar Syntax */
-@
-keyframes rainbow { 20%{
-	color: red;
-}
-40%{
-color
-:
- 
-yellow
-;
-}
-60%{
-color
-:
- 
-green
-;
-}
-80%{
-color
-:
- 
-blue
-;
-}
-100%{
-color
-:
- 
-orange
-;
-}
-}
+	@
+	keyframes rainbow { 	
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
 </style>
 <script>
 	(function(i, s, o, g, r, a, m) {

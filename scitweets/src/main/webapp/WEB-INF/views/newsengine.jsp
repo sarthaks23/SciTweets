@@ -31,320 +31,131 @@
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
 <style>
-.columnscroll {
-	overflow-y: scroll;
-	padding: 20px;
-}
+	.columnscroll {
+		overflow-y: scroll;
+		padding: 20px;
+	}
+	
+	.affix {
+		top: 20px
+	}
+	
+	.rainbow {
+		/* Chrome, Safari, Opera */
+		-webkit-animation: rainbow 20s;
+		-webkit-animation-iteration-count: 2;
+		/* Internet Explorer */
+		-ms-animation: rainbow 20s;
+		-ms-animation-iteration-count: 2;
+		/* Standar Syntax */
+		animation: rainbow 20s;
+		animation-iteration-count: 2;
+		font-family: Raleway;
+		font-size: 100px;
+	}
 
-.affix {
-	top: 20px
-}
-
-.rainbow {
 	/* Chrome, Safari, Opera */
-	-webkit-animation: rainbow 20s;
-	-webkit-animation-iteration-count: 2;
+	@
+	-webkit-keyframes rainbow { 
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
 	/* Internet Explorer */
-	-ms-animation: rainbow 20s;
-	-ms-animation-iteration-count: 2;
+	@
+	-ms-keyframes rainbow { 	
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
+	
 	/* Standar Syntax */
-	animation: rainbow 20s;
-	animation-iteration-count: 2;
-	font-family: Raleway;
-	font-size: 100px;
-}
-
-/* Chrome, Safari, Opera */
-@
--webkit-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-
-
-
-
-:
-
-
- 
-
-
-yellow
-
-
-
-
-;
-}
-60%{
-color
-
-
-
-
-:
-
-
- 
-
-
-green
-
-
-
-
-;
-}
-80%{
-color
-
-
-
-
-:
-
-
- 
-
-
-blue
-
-
-
-
-;
-}
-100%{
-color
-
-
-
-
-:
-
-
- 
-
-
-orange
-
-
-
-
-;
-}
-}
-/* Internet Explorer */
-@
--ms-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-
-
-
-
-:
-
-
- 
-
-
-yellow
-
-
-
-
-;
-}
-60%{
-color
-
-
-
-
-:
-
-
- 
-
-
-green
-
-
-
-
-;
-}
-80%{
-color
-
-
-
-
-:
-
-
- 
-
-
-blue
-
-
-
-
-;
-}
-100%{
-color
-
-
-
-
-:
-
-
- 
-
-
-orange
-
-
-
-
-;
-}
-}
-
-/* Standar Syntax */
-@
-keyframes rainbow { 20%{
-	color: red;
-}
-
-40%{
-color
-
-
-
-
-:
-
-
- 
-
-
-yellow
-
-
-
-
-;
-}
-60%{
-color
-
-
-
-
-:
-
-
- 
-
-
-green
-
-
-
-
-;
-}
-80%{
-color
-
-
-
-
-:
-
-
- 
-
-
-blue
-
-
-
-
-;
-}
-100%{
-color
-
-
-
-
-:
-
-
- 
-
-
-orange
-
-
-
-
-;
-}
-}
-.buttonstyle {
-	text-transform: uppercase;
-	font-size: 13px;
-	font-weight: 400;
-	font-family: avant garde;
-	letter-spacing: 2px;
-}
-
-.styleInstructions {
-	font-size: 15px;
-	font-weight: 400;
-	font-family: raleway;
-	color: #add8e6;
-	padding-top: 80px
-}
-
-.description {
-	font-size: 15px;
-	font-weight: 300;
-	font-family: Avant Garde;
-	color: white;
-}
-
-.url {
-	font-size: 10px;
-	font-weight: 200;
-	font-family: Raleway;
-	color: #add8e6
-}
-
-.break {
-	width: 400px;
-	border-top: 1px solid #f8f8f8;
-	border-bottom: 1px solid white;
-}
-
-h4 {
-	position: absolute;
-	top: 3px;
-	left: 3px;
-}
+	@
+	keyframes rainbow { 	
+		20%{
+			color: red;
+		}
+		
+		40%{
+			color: yellow;
+		}
+		60%{
+			color: green;
+		}
+		80%{
+			color: blue;
+		}
+		100%{
+			color: orange;
+		}
+	}
+	.buttonstyle {
+		text-transform: uppercase;
+		font-size: 13px;
+		font-weight: 400;
+		font-family: avant garde;
+		letter-spacing: 2px;
+	}
+	
+	.styleInstructions {
+		font-size: 15px;
+		font-weight: 400;
+		font-family: raleway;
+		color: #add8e6;
+		padding-top: 80px
+	}
+	
+	.description {
+		font-size: 15px;
+		font-weight: 300;
+		font-family: Avant Garde;
+		color: white;
+	}
+	
+	.url {
+		font-size: 10px;
+		font-weight: 200;
+		font-family: Raleway;
+		color: #add8e6
+	}
+	
+	.break {
+		width: 400px;
+		border-top: 1px solid #f8f8f8;
+		border-bottom: 1px solid white;
+	}
+	
+	h4 {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+	}
 </style>
 </head>
 <body style="background-color: #000000"
