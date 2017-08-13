@@ -17,6 +17,8 @@ import twitter4j.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class TweetService {
 	private static List<STweet> tweets = new ArrayList<STweet>();
@@ -41,31 +43,43 @@ public class TweetService {
 				url = status.getURLEntities()[0].getExpandedURL();
 				if (!urlsOnPage.contains(url)) {
 					String statusText = ModifyTweet.deleteSecondURL(status.getText());
+					Date date = status.getCreatedAt();
+					Calendar calendar = Calendar.getInstance();
+					calendar.setTime(date);
+					int month = calendar.get(Calendar.MONTH);
+					int year = calendar.get(Calendar.YEAR);
+					int authorId = DBConnect.selectAuthorId(username);
 					if (DBConnect.selectFromLinkcache(url) != null) {
 						String description = DBConnect.selectFromLinkcache(url)[1];
-						if (!description.equals("Invalid") && !summariesOnPage.contains(description)) {
-							tweets.add(new STweet(user.getName(), statusText, url, description));
+						boolean isValid = DBConnect.checkIsValid(url);
+						if (isValid && !summariesOnPage.contains(description)) {
+							tweets.add(new STweet(user.getName(), statusText, url, description, month, year));
 							urlsOnPage.add(url);
 							summariesOnPage.add(description);
 						}
 					} else if (Filter.checkTweet(url)) {
 						String description = SummarizeService.summarize(url, 4);
 						if (description != null && !description.isEmpty() && !summariesOnPage.contains(description)) {
-							tweets.add(new STweet(user.getName(), statusText, url, description));
-							DBConnect.insertIntoLinkcache(url, description);
+							tweets.add(new STweet(user.getName(), statusText, url, description, month, year));
+							DBConnect.insertIntoLinkcache(url, description, authorId, true);
 							urlsOnPage.add(url);
 							summariesOnPage.add(description);
 						} else {
-							DBConnect.insertIntoLinkcache(url, "Invalid");
+							DBConnect.insertIntoLinkcache(url, null, authorId, false);
 						}
-					} else if (!Filter.checkTweet(url)) {
-						DBConnect.insertIntoLinkcache(url, "Invalid");
+					} else {
+						DBConnect.insertIntoLinkcache(url, null, authorId, false);
 					}
 				}
 			}
 		}
 		if (tweets.isEmpty()) {
-			tweets.add(new STweet("", "", "", "There seems to be no valid tweets :("));
+			Date date = new Date();
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			int month = calendar.get(Calendar.MONTH);
+			int year = calendar.get(Calendar.YEAR);
+			tweets.add(new STweet(null, null, null, "There seems to be no valid tweets :(", month, year));
 		}
 		return tweets;
 	}

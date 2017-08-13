@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import dbconnection.DBConnect;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/removehandle")
-public class RemoveHandle extends HttpServlet {
+@WebServlet(urlPatterns = "/removecategory")
+public class RemoveCategory extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		request.getRequestDispatcher("/admincontrol").forward(request, response);
@@ -22,7 +22,7 @@ public class RemoveHandle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			DBConnect.deleteHandle(request.getParameter("username"));
+			DBConnect.deleteCategory(request.getParameter("category"));
 			request.getRequestDispatcher("/admincontrol").forward(request, response);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

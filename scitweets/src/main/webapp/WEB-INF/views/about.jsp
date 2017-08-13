@@ -17,6 +17,10 @@
 	overflow-y: scroll;
 	padding: 20px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ecafa83b3dce57f9fd5659affc1e80306f61ba41
 .rainbow {
 	/* Chrome, Safari, Opera */
 	-webkit-animation: rainbow 20s;
@@ -28,6 +32,10 @@
 	animation: rainbow 20s;
 	animation-iteration-count: 3;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ecafa83b3dce57f9fd5659affc1e80306f61ba41
 	/* Chrome, Safari, Opera */
 	@
 	-webkit-keyframes rainbow { 

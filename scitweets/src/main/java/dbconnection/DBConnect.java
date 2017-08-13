@@ -23,12 +23,14 @@ public class DBConnect {
 		return conn;
 	}
 
-	public static void insertIntoLinkcache(String url, String summary)
+	public static void insertIntoLinkcache(String url, String summary, int authorID, boolean isValid)
 			throws SQLException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = dbconnect();
-		PreparedStatement ps = conn.prepareStatement("INSERT INTO linkcache (url, summary) VALUES (?,?)");
+		PreparedStatement ps = conn.prepareStatement("INSERT INTO linkcache (url, summary, authorId, isValid) VALUES (?,?,?,?)");
 		ps.setString(1, url);
 		ps.setString(2, summary);
+		ps.setInt(3, authorID);
+		ps.setBoolean(4, isValid);
 		ps.execute();
 		conn.close();
 	}
@@ -36,7 +38,7 @@ public class DBConnect {
 	public static String[] selectFromLinkcache(String url)
 			throws SQLException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = dbconnect();
-		PreparedStatement ps = conn.prepareStatement("SELECT * FROM linkcache WHERE url=?");
+		PreparedStatement ps = conn.prepareStatement("SELECT url, summary FROM linkcache WHERE url=?");
 		ps.setString(1, url);
 		ResultSet resultset = ps.executeQuery();
 		String[] results = new String[2];
@@ -49,6 +51,23 @@ public class DBConnect {
 			conn.close();
 			return results;
 		}
+	}
+
+	public static boolean checkIsValid(String url)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
+		Connection conn = dbconnect();
+		PreparedStatement ps = conn.prepareStatement("SELECT isValid FROM linkcache WHERE url=?");
+		ps.setString(1, url);
+		ResultSet resultset = ps.executeQuery();
+		while (resultset.next()) {
+			boolean isValid = resultset.getBoolean("isValid");
+			if (isValid) {
+				conn.close();
+				return true;
+			}
+		}
+		conn.close();
+		return false;
 	}
 
 	public static void insertIntoHandles(String name, String username, String category)
@@ -70,14 +89,6 @@ public class DBConnect {
 	public static void deleteHandle(String username)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
 		Connection conn = dbconnect();
-		PreparedStatement getCategoryID = conn.prepareStatement("SELECT CategoryID FROM handles WHERE username=?");
-		getCategoryID.setString(1, username);
-		ResultSet resultset = getCategoryID.executeQuery();
-		resultset.next();
-		int categoryID = resultset.getInt("CategoryID");
-		PreparedStatement deleteFromCategory = conn.prepareStatement("DELETE FROM category WHERE CategoryID=?");
-		deleteFromCategory.setInt(1, categoryID);
-		deleteFromCategory.execute();
 		PreparedStatement deleteFromHandle = conn.prepareStatement("DELETE FROM handles WHERE username=?");
 		deleteFromHandle.setString(1, username);
 		deleteFromHandle.execute();
@@ -88,7 +99,7 @@ public class DBConnect {
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
 		Connection conn = dbconnect();
 		Statement statement = conn.createStatement();
-		ResultSet resultset = statement.executeQuery("SELECT * FROM handles");
+		ResultSet resultset = statement.executeQuery("SELECT name, username, CategoryID FROM handles");
 		ArrayList<String[]> results = new ArrayList<String[]>();
 		while (resultset.next()) {
 			String[] row = new String[3];
@@ -101,11 +112,22 @@ public class DBConnect {
 		return results;
 	}
 
+	public static int selectAuthorId(String username)
+			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+		Connection conn = dbconnect();
+		PreparedStatement ps = conn.prepareStatement("SELECT Id FROM handles WHERE username=?");
+		ps.setString(1, username);
+		ResultSet resultset = ps.executeQuery();
+		resultset.next();
+		conn.close();
+		return resultset.getInt("Id");
+	}
+
 	public static List<String[]> selectFromCategory()
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
 		Connection conn = dbconnect();
 		Statement statement = conn.createStatement();
-		ResultSet resultset = statement.executeQuery("SELECT * FROM category");
+		ResultSet resultset = statement.executeQuery("SELECT CategoryID, CategoryName FROM category");
 		ArrayList<String[]> results = new ArrayList<String[]>();
 		while (resultset.next()) {
 			String[] row = new String[2];
@@ -117,10 +139,19 @@ public class DBConnect {
 		return results;
 	}
 
+	public static void deleteCategory(String category)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
+		Connection conn = dbconnect();
+		PreparedStatement deleteCategory = conn.prepareStatement("DELETE FROM category WHERE CategoryName=?");
+		deleteCategory.setString(1, category);
+		deleteCategory.execute();
+		conn.close();
+	}
+
 	public static boolean categoryExists(String category)
 			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
 		Connection conn = dbconnect();
-		String query = "SELECT * FROM category WHERE CategoryName=?";
+		String query = "SELECT 1 FROM category WHERE CategoryName=?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setString(1, category);
 		ResultSet resultset = ps.executeQuery();
@@ -137,9 +168,9 @@ public class DBConnect {
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, IOException {
 		Connection conn = dbconnect();
 		Statement statement = conn.createStatement();
-		ResultSet resultset = statement.executeQuery("SELECT * FROM category");
+		ResultSet resultset = statement.executeQuery("SELECT CategoryID FROM category");
 		int lastInt = 0;
-		while (resultset.next()){
+		while (resultset.next()) {
 			lastInt = resultset.getInt("CategoryID");
 		}
 		int newInt = lastInt + 1;

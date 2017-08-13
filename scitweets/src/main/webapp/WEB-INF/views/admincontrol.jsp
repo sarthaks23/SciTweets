@@ -19,23 +19,44 @@
 			<c:forEach items="${categories}" var="category">
 				<option value="${category.categoryName}">
 			</c:forEach>
-		</datalist> <br>
-		<br> <input type="submit" value="Add" onclick="warningMessage();">
+		</datalist>
+		<br> <br> <input type="submit" value="Add"
+			onclick="addWarningMessage();">
 		<p style="color: red">${errorAddingHandle}</p>
 	</form>
-	<h3>Remove Handle:</h3>
+	<h3>Remove Handle/Category:</h3>
 	<form action="/removehandle" method="POST">
-		Username: <br> <input type="text" name="username"
-			placeholder="IE: @SU2C"> <br> <br> <input
+		Username: <br> <input list="handles" name="handle" placeholder="IE: @SU2C" >
+		<datalist id="handles">
+			<c:forEach items="${accounts}" var="account">
+				<option value="${account.username}">
+			</c:forEach>
+		</datalist> <br> <br> <input
 			type="submit" value="Remove">
+	</form>
+	<br>
+	<form action="/removecategory" method="POST">
+		<br> Category: <br> <input
+			list="categories" name="category">
+		<datalist id="categories">
+			<c:forEach items="${categories}" var="category">
+				<option value="${category.categoryName}">
+			</c:forEach>
+		</datalist>
+		<input type="submit" value="Remove" onclick="deleteCategoryWarning()">
 	</form>
 	<br>
 	<form action="/adminlogout" method="POST">
 		<input type="submit" value="Logout">
 	</form>
 	<script>
-		function warningMessage(){
+		function addWarningMessage() {
 			confirm("Are you sure you want to add this handle? Check to make sure the category is spelled right as well!");
+		}
+	</script>
+	<script>
+		function deleteCategoryWarning() {
+			confirm("Are you sure you want to delete this category? You cannot undo this action.");
 		}
 	</script>
 </body>
