@@ -119,8 +119,9 @@ public class DBConnect {
 		ps.setString(1, username);
 		ResultSet resultset = ps.executeQuery();
 		resultset.next();
+		int Id = resultset.getInt("Id");
 		conn.close();
-		return resultset.getInt("Id");
+		return Id;
 	}
 
 	public static List<String[]> selectFromCategory()
